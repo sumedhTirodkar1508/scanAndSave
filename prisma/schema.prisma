@@ -1,0 +1,119 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             String   @id @default(cuid())
+  name           String?
+  email          String   @unique
+  isemailVerified Boolean @default(false)
+  emailVerifiedAt DateTime?
+  isTemporary     Boolean @default(false) // Mark savior accounts created during emergencies
+  tempStartTime   DateTime? // allowed to login only if within than 7 days of isTempory=true time
+  password       String?  // Optional if you're using OAuth providers
+  profileImageUrl String? // Cloudinary profile image link
+  role           Role     @default(USER)
+  qrCode         QRCode[]
+  saviorLinks    SaviorQRCode[] // For saviors linked to QR codes
+  accounts       Account[] @relation("UserAccounts") // Added reverse relation for Account
+  sessions       Session[] @relation("UserSessions") // Added reverse relation for Session
+  emailVerificationTokens EmailVerificationToken[] // Reverse relation for EmailVerificationToken
+  createdAt      DateTime @default(now())
+}
+
+model QRCode {
+  id             String   @id @default(cuid())
+  userId         String
+  user           User     @relation(fields: [userId], references: [id])
+  victimName     String
+  victimEmail    String
+  relativeName   String
+  relativePhone  String
+  relativeEmail  String
+  bloodGroup     String
+  sickness       String?
+  medication     String?
+  status         QRStatus @default(PENDING)
+  qrCodeUrl      String?
+  saviors        SaviorQRCode[] // Many saviors can be linked to a QR code
+  accidentPhotos AccidentPhoto[] // Photos linked to this QR code
+  createdAt      DateTime @default(now())
+}
+
+model SaviorQRCode {
+  id             String   @id @default(cuid())
+  saviorId       String   // Links to SaviorProfile
+  savior         User     @relation(fields: [saviorId], references: [id])
+  qrCodeId       String   // Links to QRCode
+  qrCode         QRCode   @relation(fields: [qrCodeId], references: [id])
+  createdAt      DateTime @default(now())
+}
+
+model AccidentPhoto {
+  id             String   @id @default(cuid())
+  qrCodeId       String
+  qrCode         QRCode   @relation(fields: [qrCodeId], references: [id])
+  photoUrl       String   // Cloudinary link to the photo
+  createdAt      DateTime @default(now())
+}
+
+model EmailVerificationToken {
+  id         String   @id @default(cuid())
+  userId     String   // Links to the user
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  emailVerifyToken      String   // Unique token for verification
+  expires    DateTime // Expiration time for the token
+  createdAt  DateTime @default(now())
+}
+
+model Account {
+  id                 String   @id @default(cuid())
+  userId             String
+  type               String
+  provider           String
+  providerAccountId  String
+  refresh_token      String?  
+  access_token       String?  
+  expires_at         Int?     
+  token_type         String?  
+  scope              String?  
+  id_token           String?  
+  session_state      String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade, name: "UserAccounts")
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade, name: "UserSessions")
+}
+
+model VerificationToken {
+  identifier String
+  token      String
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum QRStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
