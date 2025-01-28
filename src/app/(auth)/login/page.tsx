@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import React, { useEffect, Suspense } from "react";
+import React, { useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { signIn, useSession, getSession } from "next-auth/react"; // Import signIn and getSession from NextAuth
 import { useToast } from "@/hooks/use-toast";
@@ -17,7 +17,7 @@ import { Label } from "@/components/ui/label";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import axios from "axios";
 
-function LoginContent() {
+export default function LoginPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const qrCodeId = searchParams.get("qrCodeId");
@@ -200,13 +200,5 @@ function LoginContent() {
         </form>
       </Card>
     </div>
-  );
-}
-
-export default function LoginPage() {
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <LoginContent />
-    </Suspense>
   );
 }

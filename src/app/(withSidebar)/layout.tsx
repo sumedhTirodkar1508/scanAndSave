@@ -1,3 +1,4 @@
+import React, { Suspense } from "react";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
 
@@ -15,7 +16,9 @@ export default function DashboardLayout({
       <div className="flex h-screen w-full">
         <AppSidebar />
         <div className="flex-1">
-          <main className="p-4">{children}</main>
+          <Suspense fallback={<div>Loading...</div>}>
+            <main className="p-4">{children}</main>
+          </Suspense>
         </div>
       </div>
     </SidebarProvider>

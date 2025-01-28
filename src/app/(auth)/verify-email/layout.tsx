@@ -1,3 +1,5 @@
+import React, { Suspense } from "react";
+
 export const metadata = {
   title: "Verify Email",
 };
@@ -7,5 +9,5 @@ export default function VerifyEmailLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <>{children}</>;
+  return <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>;
 }

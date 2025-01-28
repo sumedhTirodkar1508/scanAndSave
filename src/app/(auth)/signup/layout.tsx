@@ -1,3 +1,5 @@
+import React, { Suspense } from "react";
+
 export const metadata = {
   title: "Signup",
 };
@@ -7,5 +9,5 @@ export default function SignupLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <>{children}</>;
+  return <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>;
 }
