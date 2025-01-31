@@ -1,0 +1,15 @@
+name: Keep Supabase Active
+
+on:
+  schedule:
+    - cron: "0 0 */6 * *" # Runs every 6 days at midnight UTC
+  workflow_dispatch: # Allows manual execution
+
+jobs:
+  ping-supabase:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Make a request to Supabase
+        run: |
+          curl -I https://hxvbufmtsyzpiropyhoh.supabase.co
