@@ -226,7 +226,7 @@ export default function VictimInformationPage() {
               </div>
             )}
             <div>
-              <strong>Doctor's Phone:</strong> {doctorPhoneNumber || "N/A"}
+              <strong>Doctor&apos;s Phone:</strong> {doctorPhoneNumber || "N/A"}
             </div>
             <div>
               <strong>Hospital:</strong> {hospitalName || "N/A"}
