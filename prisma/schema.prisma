@@ -31,15 +31,43 @@ model QRCode {
   userId         String
   user           User     @relation(fields: [userId], references: [id])
   victimName     String
+  victimSurname  String   // New field
   victimEmail    String
-  relativeName   String
-  relativePhone  String
-  relativeEmail  String
+  victimHeight   String?   // New field
+  victimWeight   String?   // New field
+  victimAge      String?     // New field
+  victimProfession String?  // New field
+  victimNationality String? // New field
+  victimTelNumber  String?  // New field
+  victimHouseNumber String? // New field
+  victimAddress    String?  // New field
+  victimCity       String?  // New field
+  victimCountry    String?  // New field
+  relative1Name    String?  // New field
+  relative1Surname String?  // New field
+  relative1Address String?  // New field
+  relative1Phone   String?  // New field
+  relative1Email   String?  // New field
+  relative2Name    String?  // New field
+  relative2Surname String?  // New field
+  relative2Address String?  // New field
+  relative2Phone   String?  // New field
+  relative2Email   String?  // New field
+  relative3Name    String?  // New field
+  relative3Surname String?  // New field
+  relative3Address String?  // New field
+  relative3Phone   String?  // New field
+  relative3Email   String?  // New field
   bloodGroup     String
+  onDrugs        Boolean @default(false)  // New field
+  drugsName      String?  // New field
+  doctorPhoneNumber String? // New field
   sickness       String?
   medication     String?
+  hospitalName   String?  // New field for most attended hospital
   status         QRStatus @default(PENDING)
   qrCodeUrl      String?
+  displayPicUrl  String? // Cloudinary display picture image link
   saviors        SaviorQRCode[] // Many saviors can be linked to a QR code
   accidentPhotos AccidentPhoto[] // Photos linked to this QR code
   createdAt      DateTime @default(now())

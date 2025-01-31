@@ -22,6 +22,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 export default function MyScannedQRsPage() {
   const { data: session } = useSession();
@@ -92,7 +93,7 @@ export default function MyScannedQRsPage() {
                     </TableCell>
                     <TableCell>{qr.qrCode.victimEmail || "N/A"}</TableCell>
                     <TableCell>
-                      {new Date(qr.createdAt).toLocaleString()}
+                      {new Date(qr.createdAt).toLocaleString("fr-TG")}
                     </TableCell>
                   </TableRow>
                 </DialogTrigger>
@@ -101,47 +102,166 @@ export default function MyScannedQRsPage() {
                     <DialogTitle>QR Code Details</DialogTitle>
                   </DialogHeader>
                   {selectedQR && (
-                    <div className="grid gap-4">
-                      <div>
-                        <strong>Victim Name:</strong>{" "}
-                        {selectedQR.qrCode.victimName || "N/A"}
+                    <ScrollArea className="h-[600px] w-full rounded-md border p-2">
+                      <div className="grid gap-4">
+                        <div>
+                          <strong>Victim Name:</strong>{" "}
+                          {selectedQR.qrCode.victimName || "N/A"}
+                        </div>
+                        <div>
+                          <strong>Victim Surname:</strong>{" "}
+                          {selectedQR.qrCode.victimSurname || "N/A"}
+                        </div>
+                        <div>
+                          <strong>Victim Email:</strong>{" "}
+                          {selectedQR.qrCode.victimEmail || "N/A"}
+                        </div>
+                        <div>
+                          <strong>Victim Height:</strong>{" "}
+                          {selectedQR.qrCode.victimHeight || "N/A"}
+                        </div>
+                        <div>
+                          <strong>Victim Weight:</strong>{" "}
+                          {selectedQR.qrCode.victimWeight || "N/A"}
+                        </div>
+                        <div>
+                          <strong>Victim Age:</strong>{" "}
+                          {selectedQR.qrCode.victimAge || "N/A"}
+                        </div>
+                        <div>
+                          <strong>Victim Profession:</strong>{" "}
+                          {selectedQR.qrCode.victimProfession || "N/A"}
+                        </div>
+                        <div>
+                          <strong>Victim Nationality:</strong>{" "}
+                          {selectedQR.qrCode.victimNationality || "N/A"}
+                        </div>
+                        <div>
+                          <strong>Victim Tel Number:</strong>{" "}
+                          {selectedQR.qrCode.victimTelNumber || "N/A"}
+                        </div>
+                        <div>
+                          <strong>Victim House Number:</strong>{" "}
+                          {selectedQR.qrCode.victimHouseNumber || "N/A"}
+                        </div>
+                        <div>
+                          <strong>Victim Address:</strong>{" "}
+                          {selectedQR.qrCode.victimAddress || "N/A"}
+                        </div>
+                        <div>
+                          <strong>Victim City:</strong>{" "}
+                          {selectedQR.qrCode.victimCity || "N/A"}
+                        </div>
+                        <div>
+                          <strong>Victim Country:</strong>{" "}
+                          {selectedQR.qrCode.victimCountry || "N/A"}
+                        </div>
+                        <div>
+                          <strong>Relative 1 Name:</strong>{" "}
+                          {selectedQR.qrCode.relative1Name || "N/A"}
+                        </div>
+                        <div>
+                          <strong>Relative 1 Surname:</strong>{" "}
+                          {selectedQR.qrCode.relative1Surname || "N/A"}
+                        </div>
+                        <div>
+                          <strong>Relative 1 Address:</strong>{" "}
+                          {selectedQR.qrCode.relative1Address || "N/A"}
+                        </div>
+                        <div>
+                          <strong>Relative 1 Phone:</strong>{" "}
+                          {selectedQR.qrCode.relative1Phone || "N/A"}
+                        </div>
+                        <div>
+                          <strong>Relative 1 Email:</strong>{" "}
+                          {selectedQR.qrCode.relative1Email || "N/A"}
+                        </div>
+                        <div>
+                          <strong>Relative 2 Name:</strong>{" "}
+                          {selectedQR.qrCode.relative2Name || "N/A"}
+                        </div>
+                        <div>
+                          <strong>Relative 2 Surname:</strong>{" "}
+                          {selectedQR.qrCode.relative2Surname || "N/A"}
+                        </div>
+                        <div>
+                          <strong>Relative 2 Address:</strong>{" "}
+                          {selectedQR.qrCode.relative2Address || "N/A"}
+                        </div>
+                        <div>
+                          <strong>Relative 2 Phone:</strong>{" "}
+                          {selectedQR.qrCode.relative2Phone || "N/A"}
+                        </div>
+                        <div>
+                          <strong>Relative 2 Email:</strong>{" "}
+                          {selectedQR.qrCode.relative2Email || "N/A"}
+                        </div>
+                        <div>
+                          <strong>Relative 3 Name:</strong>{" "}
+                          {selectedQR.qrCode.relative3Name || "N/A"}
+                        </div>
+                        <div>
+                          <strong>Relative 3 Surname:</strong>{" "}
+                          {selectedQR.qrCode.relative3Surname || "N/A"}
+                        </div>
+                        <div>
+                          <strong>Relative 3 Address:</strong>{" "}
+                          {selectedQR.qrCode.relative3Address || "N/A"}
+                        </div>
+                        <div>
+                          <strong>Relative 3 Phone:</strong>{" "}
+                          {selectedQR.qrCode.relative3Phone || "N/A"}
+                        </div>
+                        <div>
+                          <strong>Relative 3 Email:</strong>{" "}
+                          {selectedQR.qrCode.relative3Email || "N/A"}
+                        </div>
+                        <div>
+                          <strong>Blood Group:</strong>{" "}
+                          {selectedQR.qrCode.bloodGroup || "N/A"}
+                        </div>
+                        <div>
+                          <strong>On Drugs:</strong>{" "}
+                          {selectedQR.qrCode.onDrugs ? "Yes" : "No"}
+                        </div>
+                        <div>
+                          <strong>Drugs Name:</strong>{" "}
+                          {selectedQR.qrCode.drugsName || "N/A"}
+                        </div>
+                        <div>
+                          <strong>Doctor Phone Number:</strong>{" "}
+                          {selectedQR.qrCode.doctorPhoneNumber || "N/A"}
+                        </div>
+                        <div>
+                          <strong>Sickness:</strong>{" "}
+                          {selectedQR.qrCode.sickness || "N/A"}
+                        </div>
+                        <div>
+                          <strong>Medication:</strong>{" "}
+                          {selectedQR.qrCode.medication || "N/A"}
+                        </div>
+                        <div>
+                          <strong>Hospital Name:</strong>{" "}
+                          {selectedQR.qrCode.hospitalName || "N/A"}
+                        </div>
+                        <div>
+                          <strong>Status:</strong>{" "}
+                          {selectedQR.qrCode.status || "N/A"}
+                        </div>
+                        <div>
+                          <strong>Created At:</strong>{" "}
+                          {new Date(selectedQR.qrCode.createdAt).toLocaleString(
+                            "fr-TG"
+                          )}
+                        </div>
+                        <div className="flex justify-center">
+                          <img
+                            src={selectedQR.qrCode.qrCodeUrl}
+                            alt="QR Code"
+                          />
+                        </div>
                       </div>
-                      <div>
-                        <strong>Victim Email:</strong>{" "}
-                        {selectedQR.qrCode.victimEmail || "N/A"}
-                      </div>
-                      <div>
-                        <strong>Blood Group:</strong>{" "}
-                        {selectedQR.qrCode.bloodGroup || "N/A"}
-                      </div>
-                      <div>
-                        <strong>Medication:</strong>{" "}
-                        {selectedQR.qrCode.medication || "N/A"}
-                      </div>
-                      <div>
-                        <strong>Relative Name:</strong>{" "}
-                        {selectedQR.qrCode.relativeName || "N/A"}
-                      </div>
-                      <div>
-                        <strong>Relative Phone:</strong>{" "}
-                        {selectedQR.qrCode.relativePhone || "N/A"}
-                      </div>
-                      <div>
-                        <strong>Relative Email:</strong>{" "}
-                        {selectedQR.qrCode.relativeEmail || "N/A"}
-                      </div>
-                      <div>
-                        <strong>Status:</strong>{" "}
-                        {selectedQR.qrCode.status || "N/A"}
-                      </div>
-                      <div>
-                        <strong>Created At:</strong>{" "}
-                        {new Date(selectedQR.qrCode.createdAt).toLocaleString()}
-                      </div>
-                      <div className="flex justify-center">
-                        <img src={selectedQR.qrCode.qrCodeUrl} />
-                      </div>
-                    </div>
+                    </ScrollArea>
                   )}
                 </DialogContent>
               </Dialog>

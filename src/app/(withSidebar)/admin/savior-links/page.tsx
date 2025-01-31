@@ -99,7 +99,7 @@ export default function AdminSaviorsPage() {
                   {savior.qrCode ? savior.qrCode.victimEmail : "N/A"}
                 </TableCell>
                 <TableCell>
-                  {new Date(savior.createdAt).toLocaleString()}
+                  {new Date(savior.createdAt).toLocaleString("fr-TG")}
                 </TableCell>
               </TableRow>
             ))}

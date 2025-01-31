@@ -35,18 +35,45 @@ export default function GenerateQRPage() {
   const [isEditing, setIsEditing] = useState(false);
   const [qrDetails, setQRDetails] = useState({
     victimName: "",
+    victimSurname: "",
     victimEmail: "",
-    relativeName: "",
-    relativePhone: "",
-    relativeEmail: "",
+    victimHeight: "",
+    victimWeight: "",
+    victimAge: "",
+    victimProfession: "",
+    victimNationality: "",
+    victimTelNumber: "",
+    victimHouseNumber: "",
+    victimAddress: "",
+    victimCity: "",
+    victimCountry: "",
+    relative1Name: "",
+    relative1Surname: "",
+    relative1Address: "",
+    relative1Phone: "",
+    relative1Email: "",
+    relative2Name: "",
+    relative2Surname: "",
+    relative2Address: "",
+    relative2Phone: "",
+    relative2Email: "",
+    relative3Name: "",
+    relative3Surname: "",
+    relative3Address: "",
+    relative3Phone: "",
+    relative3Email: "",
     bloodGroup: "",
+    onDrugs: false,
+    drugsName: "",
+    doctorPhoneNumber: "",
     sickness: "",
     medication: "",
+    hospitalName: "",
     qrStatus: "",
   });
 
   // Handle input changes dynamically
-  const handleInputChange = (field: string, value: string) => {
+  const handleInputChange = (field: string, value: string | boolean) => {
     setQRDetails({ ...qrDetails, [field]: value });
   };
 
@@ -62,13 +89,40 @@ export default function GenerateQRPage() {
           const data = response.data;
           setQRDetails({
             victimName: data.victimName || "",
+            victimSurname: data.victimSurname || "",
             victimEmail: data.victimEmail || "",
-            relativeName: data.relativeName || "",
-            relativePhone: data.relativePhone || "",
-            relativeEmail: data.relativeEmail || "",
+            victimHeight: data.victimHeight || null,
+            victimWeight: data.victimWeight || null,
+            victimAge: data.victimAge || null,
+            victimProfession: data.victimProfession || "",
+            victimNationality: data.victimNationality || "",
+            victimTelNumber: data.victimTelNumber || "",
+            victimHouseNumber: data.victimHouseNumber || "",
+            victimAddress: data.victimAddress || "",
+            victimCity: data.victimCity || "",
+            victimCountry: data.victimCountry || "",
+            relative1Name: data.relative1Name || "",
+            relative1Surname: data.relative1Surname || "",
+            relative1Address: data.relative1Address || "",
+            relative1Phone: data.relative1Phone || "",
+            relative1Email: data.relative1Email || "",
+            relative2Name: data.relative2Name || "",
+            relative2Surname: data.relative2Surname || "",
+            relative2Address: data.relative2Address || "",
+            relative2Phone: data.relative2Phone || "",
+            relative2Email: data.relative2Email || "",
+            relative3Name: data.relative3Name || "",
+            relative3Surname: data.relative3Surname || "",
+            relative3Address: data.relative3Address || "",
+            relative3Phone: data.relative3Phone || "",
+            relative3Email: data.relative3Email || "",
             bloodGroup: data.bloodGroup || "",
+            onDrugs: data.onDrugs || false,
+            drugsName: data.drugsName || "",
+            doctorPhoneNumber: data.doctorPhoneNumber || "",
             sickness: data.sickness || "",
             medication: data.medication || "",
+            hospitalName: data.hospitalName || "",
             qrStatus: data.status || "PENDING",
           });
         })
@@ -152,9 +206,9 @@ export default function GenerateQRPage() {
         <CardContent>
           <form>
             <div className="grid w-full gap-4">
-              {/* Victim Name */}
+              {/* Victim Details */}
               <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="victimName">Name</Label>
+                <Label htmlFor="victimName">Victim Name</Label>
                 <Input
                   id="victimName"
                   type="text"
@@ -165,10 +219,20 @@ export default function GenerateQRPage() {
                   placeholder="Enter victim's name"
                 />
               </div>
-
-              {/* Victim Email */}
               <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="victimEmail">Email</Label>
+                <Label htmlFor="victimSurname">Victim Surname</Label>
+                <Input
+                  id="victimSurname"
+                  type="text"
+                  value={qrDetails.victimSurname}
+                  onChange={(e) =>
+                    handleInputChange("victimSurname", e.target.value)
+                  }
+                  placeholder="Enter victim's surname"
+                />
+              </div>
+              <div className="flex flex-col space-y-1.5">
+                <Label htmlFor="victimEmail">Victim Email</Label>
                 <Input
                   id="victimEmail"
                   type="email"
@@ -179,50 +243,314 @@ export default function GenerateQRPage() {
                   placeholder="Enter victim's email"
                 />
               </div>
-
-              {/* Relative Name */}
               <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="relativeName">Relative Name</Label>
+                <Label htmlFor="victimHeight">Victim Height (cm)</Label>
                 <Input
-                  id="relativeName"
-                  type="text"
-                  value={qrDetails.relativeName}
+                  id="victimHeight"
+                  type="number"
+                  value={qrDetails.victimHeight || ""}
                   onChange={(e) =>
-                    handleInputChange("relativeName", e.target.value)
+                    handleInputChange("victimHeight", e.target.value)
                   }
-                  placeholder="Enter relative's name"
+                  placeholder="Enter victim's height"
+                />
+              </div>
+              <div className="flex flex-col space-y-1.5">
+                <Label htmlFor="victimWeight">Victim Weight (kg)</Label>
+                <Input
+                  id="victimWeight"
+                  type="number"
+                  value={qrDetails.victimWeight || ""}
+                  onChange={(e) =>
+                    handleInputChange("victimWeight", e.target.value)
+                  }
+                  placeholder="Enter victim's weight"
+                />
+              </div>
+              <div className="flex flex-col space-y-1.5">
+                <Label htmlFor="victimAge">Victim Age</Label>
+                <Input
+                  id="victimAge"
+                  type="number"
+                  value={qrDetails.victimAge || ""}
+                  onChange={(e) =>
+                    handleInputChange("victimAge", e.target.value)
+                  }
+                  placeholder="Enter victim's age"
+                />
+              </div>
+              <div className="flex flex-col space-y-1.5">
+                <Label htmlFor="victimProfession">Victim Profession</Label>
+                <Input
+                  id="victimProfession"
+                  type="text"
+                  value={qrDetails.victimProfession}
+                  onChange={(e) =>
+                    handleInputChange("victimProfession", e.target.value)
+                  }
+                  placeholder="Enter victim's profession"
+                />
+              </div>
+              <div className="flex flex-col space-y-1.5">
+                <Label htmlFor="victimNationality">Victim Nationality</Label>
+                <Input
+                  id="victimNationality"
+                  type="text"
+                  value={qrDetails.victimNationality}
+                  onChange={(e) =>
+                    handleInputChange("victimNationality", e.target.value)
+                  }
+                  placeholder="Enter victim's nationality"
+                />
+              </div>
+              <div className="flex flex-col space-y-1.5">
+                <Label htmlFor="victimTelNumber">Victim Phone Number</Label>
+                <Input
+                  id="victimTelNumber"
+                  type="text"
+                  value={qrDetails.victimTelNumber}
+                  onChange={(e) =>
+                    handleInputChange("victimTelNumber", e.target.value)
+                  }
+                  placeholder="Enter victim's phone number"
+                />
+              </div>
+              <div className="flex flex-col space-y-1.5">
+                <Label htmlFor="victimHouseNumber">Victim House Number</Label>
+                <Input
+                  id="victimHouseNumber"
+                  type="text"
+                  value={qrDetails.victimHouseNumber}
+                  onChange={(e) =>
+                    handleInputChange("victimHouseNumber", e.target.value)
+                  }
+                  placeholder="Enter victim's house number"
+                />
+              </div>
+              <div className="flex flex-col space-y-1.5">
+                <Label htmlFor="victimAddress">Victim Address</Label>
+                <Input
+                  id="victimAddress"
+                  type="text"
+                  value={qrDetails.victimAddress}
+                  onChange={(e) =>
+                    handleInputChange("victimAddress", e.target.value)
+                  }
+                  placeholder="Enter victim's address"
+                />
+              </div>
+              <div className="flex flex-col space-y-1.5">
+                <Label htmlFor="victimCity">Victim City</Label>
+                <Input
+                  id="victimCity"
+                  type="text"
+                  value={qrDetails.victimCity}
+                  onChange={(e) =>
+                    handleInputChange("victimCity", e.target.value)
+                  }
+                  placeholder="Enter victim's city"
+                />
+              </div>
+              <div className="flex flex-col space-y-1.5">
+                <Label htmlFor="victimCountry">Victim Country</Label>
+                <Input
+                  id="victimCountry"
+                  type="text"
+                  value={qrDetails.victimCountry}
+                  onChange={(e) =>
+                    handleInputChange("victimCountry", e.target.value)
+                  }
+                  placeholder="Enter victim's country"
                 />
               </div>
 
-              {/* Relative Phone */}
+              {/* Relative 1 Details */}
               <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="relativePhone">Relative Phone</Label>
+                <Label htmlFor="relative1Name">Relative 1 Name</Label>
                 <Input
-                  id="relativePhone"
+                  id="relative1Name"
                   type="text"
-                  value={qrDetails.relativePhone}
+                  value={qrDetails.relative1Name}
                   onChange={(e) =>
-                    handleInputChange("relativePhone", e.target.value)
+                    handleInputChange("relative1Name", e.target.value)
                   }
-                  placeholder="Enter relative's phone number"
+                  placeholder="Enter relative 1's name"
                 />
               </div>
-
-              {/* Relative Email */}
               <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="relativeEmail">Relative Email</Label>
+                <Label htmlFor="relative1Surname">Relative 1 Surname</Label>
                 <Input
-                  id="relativeEmail"
+                  id="relative1Surname"
+                  type="text"
+                  value={qrDetails.relative1Surname}
+                  onChange={(e) =>
+                    handleInputChange("relative1Surname", e.target.value)
+                  }
+                  placeholder="Enter relative 1's surname"
+                />
+              </div>
+              <div className="flex flex-col space-y-1.5">
+                <Label htmlFor="relative1Address">Relative 1 Address</Label>
+                <Input
+                  id="relative1Address"
+                  type="text"
+                  value={qrDetails.relative1Address}
+                  onChange={(e) =>
+                    handleInputChange("relative1Address", e.target.value)
+                  }
+                  placeholder="Enter relative 1's address"
+                />
+              </div>
+              <div className="flex flex-col space-y-1.5">
+                <Label htmlFor="relative1Phone">Relative 1 Phone</Label>
+                <Input
+                  id="relative1Phone"
+                  type="text"
+                  value={qrDetails.relative1Phone}
+                  onChange={(e) =>
+                    handleInputChange("relative1Phone", e.target.value)
+                  }
+                  placeholder="Enter relative 1's phone number"
+                />
+              </div>
+              <div className="flex flex-col space-y-1.5">
+                <Label htmlFor="relative1Email">Relative 1 Email</Label>
+                <Input
+                  id="relative1Email"
                   type="email"
-                  value={qrDetails.relativeEmail}
+                  value={qrDetails.relative1Email}
                   onChange={(e) =>
-                    handleInputChange("relativeEmail", e.target.value)
+                    handleInputChange("relative1Email", e.target.value)
                   }
-                  placeholder="Enter relative's email"
+                  placeholder="Enter relative 1's email"
                 />
               </div>
 
-              {/* Blood Group */}
+              {/* Relative 2 Details */}
+              <div className="flex flex-col space-y-1.5">
+                <Label htmlFor="relative2Name">Relative 2 Name</Label>
+                <Input
+                  id="relative2Name"
+                  type="text"
+                  value={qrDetails.relative2Name}
+                  onChange={(e) =>
+                    handleInputChange("relative2Name", e.target.value)
+                  }
+                  placeholder="Enter relative 2's name"
+                />
+              </div>
+              <div className="flex flex-col space-y-1.5">
+                <Label htmlFor="relative2Surname">Relative 2 Surname</Label>
+                <Input
+                  id="relative2Surname"
+                  type="text"
+                  value={qrDetails.relative2Surname}
+                  onChange={(e) =>
+                    handleInputChange("relative2Surname", e.target.value)
+                  }
+                  placeholder="Enter relative 2's surname"
+                />
+              </div>
+              <div className="flex flex-col space-y-1.5">
+                <Label htmlFor="relative2Address">Relative 2 Address</Label>
+                <Input
+                  id="relative2Address"
+                  type="text"
+                  value={qrDetails.relative2Address}
+                  onChange={(e) =>
+                    handleInputChange("relative2Address", e.target.value)
+                  }
+                  placeholder="Enter relative 2's address"
+                />
+              </div>
+              <div className="flex flex-col space-y-1.5">
+                <Label htmlFor="relative2Phone">Relative 2 Phone</Label>
+                <Input
+                  id="relative2Phone"
+                  type="text"
+                  value={qrDetails.relative2Phone}
+                  onChange={(e) =>
+                    handleInputChange("relative2Phone", e.target.value)
+                  }
+                  placeholder="Enter relative 2's phone number"
+                />
+              </div>
+              <div className="flex flex-col space-y-1.5">
+                <Label htmlFor="relative2Email">Relative 2 Email</Label>
+                <Input
+                  id="relative2Email"
+                  type="email"
+                  value={qrDetails.relative2Email}
+                  onChange={(e) =>
+                    handleInputChange("relative2Email", e.target.value)
+                  }
+                  placeholder="Enter relative 2's email"
+                />
+              </div>
+
+              {/* Relative 3 Details */}
+              <div className="flex flex-col space-y-1.5">
+                <Label htmlFor="relative3Name">Relative 3 Name</Label>
+                <Input
+                  id="relative3Name"
+                  type="text"
+                  value={qrDetails.relative3Name}
+                  onChange={(e) =>
+                    handleInputChange("relative3Name", e.target.value)
+                  }
+                  placeholder="Enter relative 3's name"
+                />
+              </div>
+              <div className="flex flex-col space-y-1.5">
+                <Label htmlFor="relative3Surname">Relative 3 Surname</Label>
+                <Input
+                  id="relative3Surname"
+                  type="text"
+                  value={qrDetails.relative3Surname}
+                  onChange={(e) =>
+                    handleInputChange("relative3Surname", e.target.value)
+                  }
+                  placeholder="Enter relative 3's surname"
+                />
+              </div>
+              <div className="flex flex-col space-y-1.5">
+                <Label htmlFor="relative3Address">Relative 3 Address</Label>
+                <Input
+                  id="relative3Address"
+                  type="text"
+                  value={qrDetails.relative3Address}
+                  onChange={(e) =>
+                    handleInputChange("relative3Address", e.target.value)
+                  }
+                  placeholder="Enter relative 3's address"
+                />
+              </div>
+              <div className="flex flex-col space-y-1.5">
+                <Label htmlFor="relative3Phone">Relative 3 Phone</Label>
+                <Input
+                  id="relative3Phone"
+                  type="text"
+                  value={qrDetails.relative3Phone}
+                  onChange={(e) =>
+                    handleInputChange("relative3Phone", e.target.value)
+                  }
+                  placeholder="Enter relative 3's phone number"
+                />
+              </div>
+              <div className="flex flex-col space-y-1.5">
+                <Label htmlFor="relative3Email">Relative 3 Email</Label>
+                <Input
+                  id="relative3Email"
+                  type="email"
+                  value={qrDetails.relative3Email}
+                  onChange={(e) =>
+                    handleInputChange("relative3Email", e.target.value)
+                  }
+                  placeholder="Enter relative 3's email"
+                />
+              </div>
+
+              {/* Medical Information */}
               <div className="flex flex-col space-y-1.5">
                 <Label htmlFor="bloodGroup">Blood Group</Label>
                 <Select
@@ -245,8 +573,41 @@ export default function GenerateQRPage() {
                   </SelectContent>
                 </Select>
               </div>
-
-              {/* Sickness */}
+              <div className="flex flex-col space-y-1.5">
+                <Label htmlFor="onDrugs">On Drugs</Label>
+                <Input
+                  id="onDrugs"
+                  type="checkbox"
+                  checked={qrDetails.onDrugs}
+                  onChange={(e) =>
+                    handleInputChange("onDrugs", e.target.checked)
+                  }
+                />
+              </div>
+              <div className="flex flex-col space-y-1.5">
+                <Label htmlFor="drugsName">Drugs Name</Label>
+                <Input
+                  id="drugsName"
+                  type="text"
+                  value={qrDetails.drugsName}
+                  onChange={(e) =>
+                    handleInputChange("drugsName", e.target.value)
+                  }
+                  placeholder="Enter drugs name"
+                />
+              </div>
+              <div className="flex flex-col space-y-1.5">
+                <Label htmlFor="doctorPhoneNumber">Doctor Phone Number</Label>
+                <Input
+                  id="doctorPhoneNumber"
+                  type="text"
+                  value={qrDetails.doctorPhoneNumber}
+                  onChange={(e) =>
+                    handleInputChange("doctorPhoneNumber", e.target.value)
+                  }
+                  placeholder="Enter doctor's phone number"
+                />
+              </div>
               <div className="flex flex-col space-y-1.5">
                 <Label htmlFor="sickness">Sickness</Label>
                 <Textarea
@@ -259,8 +620,6 @@ export default function GenerateQRPage() {
                   maxLength={200} // Limit to 200 characters
                 />
               </div>
-
-              {/* Medication */}
               <div className="flex flex-col space-y-1.5">
                 <Label htmlFor="medication">Medication</Label>
                 <Textarea
@@ -271,6 +630,18 @@ export default function GenerateQRPage() {
                   }
                   placeholder="List any medications"
                   maxLength={200} // Limit to 200 characters
+                />
+              </div>
+              <div className="flex flex-col space-y-1.5">
+                <Label htmlFor="hospitalName">Hospital Name</Label>
+                <Input
+                  id="hospitalName"
+                  type="text"
+                  value={qrDetails.hospitalName}
+                  onChange={(e) =>
+                    handleInputChange("hospitalName", e.target.value)
+                  }
+                  placeholder="Enter hospital name"
                 />
               </div>
             </div>

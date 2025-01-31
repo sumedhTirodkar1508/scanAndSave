@@ -66,15 +66,6 @@ export const authOptions: NextAuthOptions = {
         } catch (err: any) {
           throw new Error(err.message);
         }
-        // if (!isValid) {
-        //   throw new Error("Invalid email or password");
-        // }
-        // return {
-        //   id: user.id,
-        //   email: user.email,
-        //   name: user.name,
-        //   role: user.role,
-        // };
       },
     }),
   ],
@@ -94,6 +85,7 @@ export const authOptions: NextAuthOptions = {
         token.role = user.role;
         token.isemailVerified = user.isemailVerified;
         token.email = user.email;
+        token.isTemporary = user.isTemporary; // Add isTemporary field
       }
       return token;
     },
@@ -104,6 +96,7 @@ export const authOptions: NextAuthOptions = {
         session.user.role = token.role;
         session.user.isemailVerified = token.isemailVerified;
         session.user.email = token.email;
+        session.user.isTemporary = token.isTemporary; // Add isTemporary field
       }
       return session;
     },

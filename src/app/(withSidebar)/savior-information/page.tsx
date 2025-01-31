@@ -116,7 +116,7 @@ export default function SaviorsPage() {
                   {savior.qrCode ? savior.qrCode.victimName : "N/A"}
                 </TableCell>
                 <TableCell>
-                  {new Date(savior.createdAt).toLocaleString()}
+                  {new Date(savior.createdAt).toLocaleString("fr-TG")}
                 </TableCell>
               </TableRow>
             ))}

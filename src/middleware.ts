@@ -10,6 +10,11 @@ export async function middleware(request: NextRequest) {
   if (url.pathname.startsWith("/qr-scanner")) {
     return NextResponse.next();
   }
+
+  // Redirect temporary users away from all pages except 'My Scanned QRs'
+  if (token && token.isTemporary && url.pathname !== "/my-scanned-qrs") {
+    return NextResponse.redirect(new URL("/my-scanned-qrs", request.url));
+  }
   // Redirect logged-in users away from login or signup pages
   if (
     token &&

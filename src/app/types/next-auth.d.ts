@@ -5,6 +5,7 @@ declare module "next-auth" {
     id?: string;
     isemailVerified?: boolean;
     email?: string;
+    isTemporary?: boolean;
     role?: "USER" | "ADMIN";
   }
 
@@ -13,6 +14,7 @@ declare module "next-auth" {
       id?: string;
       isemailVerified?: boolean;
       email?: string;
+      isTemporary?: boolean;
       role?: "USER" | "ADMIN";
     } & DefaultSession["user"];
   }
