@@ -4,12 +4,14 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
+import { useTranslations } from "next-intl";
 import BarcodeScannerComponent from "react-qr-barcode-scanner";
 import { Loader2 } from "lucide-react";
 
 export default function QRScannerPage() {
   const router = useRouter();
   const { toast } = useToast();
+  const t = useTranslations("QRScanner");
   const [scanning, setScanning] = useState(true);
   const [isClient, setIsClient] = useState(false); // Ensure client-side rendering
 
@@ -35,7 +37,7 @@ export default function QRScannerPage() {
       if (!isValidURL(result)) {
         toast({
           title: "Invalid QR Code",
-          description: "The QR code does not contain a valid URL.",
+          description: t("messages.invalidURL"),
           variant: "destructive",
         });
         return;
@@ -48,7 +50,7 @@ export default function QRScannerPage() {
       if (!qrID) {
         toast({
           title: "Invalid QR Code",
-          description: "The QR code does not contain valid registration data.",
+          description: t("messages.invalidData"),
           variant: "destructive",
         });
         return;
@@ -60,7 +62,7 @@ export default function QRScannerPage() {
       console.error("Error processing QR code:", error);
       toast({
         title: "Error",
-        description: "Failed to process QR code.",
+        description: t("messages.processingError"),
         variant: "destructive",
       });
     }
@@ -68,13 +70,11 @@ export default function QRScannerPage() {
 
   return (
     <div className="container mx-auto py-8">
-      <h1 className="text-3xl font-bold text-center mb-8">
-        Scan QR Code to Register
-      </h1>
+      <h1 className="text-3xl font-bold text-center mb-8">{t("title")}</h1>
 
       <Card className="max-w-md mx-auto">
         <CardHeader>
-          <CardTitle>Scanner</CardTitle>
+          <CardTitle>{t("scannerTitle")}</CardTitle>
         </CardHeader>
         <CardContent>
           {isClient ? (

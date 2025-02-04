@@ -4,6 +4,7 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useToast } from "@/hooks/use-toast";
 import { useSession } from "next-auth/react";
+import { useTranslations } from "next-intl";
 import { QrRequest } from "@/app/types/qrResquests";
 import { Button } from "@/components/ui/button";
 import {
@@ -29,6 +30,7 @@ export default function QRApprovals() {
   const [loading, setLoading] = useState(true); // Add loading state
   const router = useRouter();
   const { toast } = useToast();
+  const t = useTranslations("QRApprovals");
 
   useEffect(() => {
     if (status === "loading") return; // Wait for session to load
@@ -67,14 +69,14 @@ export default function QRApprovals() {
       toast({
         title: "Success",
         description: approve
-          ? "QR code approved successfully."
-          : "QR code rejected successfully.",
+          ? t("messages.approveSuccess")
+          : t("messages.rejectSuccess"),
       });
     } catch (error) {
       toast({
         variant: "destructive",
         title: "Error",
-        description: "Error updating QR code status.",
+        description: t("messages.error"),
       });
     } finally {
       setLoading(false);
@@ -85,24 +87,22 @@ export default function QRApprovals() {
     <div className="flex flex-col justify-start min-h-screen py-8">
       <Card className="w-full max-w-5xl mx-auto">
         <CardHeader>
-          <CardTitle className="text-2xl">QR Code Approval Requests</CardTitle>
+          <CardTitle className="text-2xl">{t("title")}</CardTitle>
         </CardHeader>
         <CardContent>
           {loading ? ( // Show loader when loading is true
             <div className="flex justify-center items-center py-10">
-              <p className="ml-4">Loading requests...</p>
+              <p className="ml-4">{t("messages.loading")}</p>
             </div>
           ) : qrRequests.length > 0 ? (
             <Table>
-              <TableCaption>
-                A list of pending QR code approval requests.
-              </TableCaption>
+              <TableCaption>{t("tableCaption")}</TableCaption>
               <TableHeader>
                 <TableRow>
-                  <TableHead>Victim Name</TableHead>
-                  <TableHead>Blood Group</TableHead>
-                  <TableHead>Email</TableHead>
-                  <TableHead>Actions</TableHead>
+                  <TableHead>{t("headers.victimName")}</TableHead>
+                  <TableHead>{t("headers.bloodGroup")}</TableHead>
+                  <TableHead>{t("headers.email")}</TableHead>
+                  <TableHead>{t("headers.actions")}</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -116,13 +116,13 @@ export default function QRApprovals() {
                         variant="default"
                         onClick={() => handleApproval(qr.id, true)}
                       >
-                        Approve
+                        {t("buttons.approve")}
                       </Button>
                       <Button
                         variant="destructive"
                         onClick={() => handleApproval(qr.id, false)}
                       >
-                        Reject
+                        {t("buttons.reject")}
                       </Button>
                     </TableCell>
                   </TableRow>
@@ -130,7 +130,7 @@ export default function QRApprovals() {
               </TableBody>
             </Table>
           ) : (
-            <p className="text-center py-4">No pending QR requests found.</p>
+            <p className="text-center py-4">{t("messages.noRequests")}</p>
           )}
         </CardContent>
       </Card>

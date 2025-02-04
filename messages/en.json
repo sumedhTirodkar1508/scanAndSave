@@ -1,0 +1,301 @@
+{
+  "Dashboard": {
+    "dashboardTitle": "QR Code Dashboard",
+    "approvedTitle": "Approved QR Codes",
+    "pendingTitle": "Pending QR Codes",
+    "table": {
+      "name": "Name",
+      "status": "Status",
+      "actions": "Actions"
+    },
+    "status": {
+      "approved": "Approved",
+      "pending": "Pending"
+    },
+    "buttons": {
+      "options": "Options",
+      "viewQR": "View QR",
+      "downloadQR": "Download QR",
+      "edit": "Edit",
+      "delete": "Delete",
+      "cancel": "Cancel",
+      "confirm": "Confirm"
+    },
+    "messages": {
+      "noApproved": "No approved QR Codes found.",
+      "noPending": "No pending QR Codes found.",
+      "deleteDialog": {
+        "title": "Confirm Deletion",
+        "description": "Are you sure you want to delete this QR Code?"
+      },
+      "downloadSuccess": "QR Code has been downloaded as a PDF.",
+      "downloadError": "Failed to download QR Code as a PDF."
+    }
+  },
+  "Sidebar": {
+    "navigation": "Navigation",
+    "admin": "Admin",
+    "menu": {
+      "dashboard": "Dashboard",
+      "generateQR": "Generate QR",
+      "saviorInfo": "Savior Info",
+      "myScannedQRs": "My Scanned QRs",
+      "scanQR": "Scan QR",
+      "approveReject": "Approve/Reject QR",
+      "saviorLinks": "Savior Links",
+      "logout": "Logout"
+    }
+  },
+  "GenerateQR": {
+    "title": {
+      "new": "Generate QR Code",
+      "edit": "Edit QR Code",
+      "processing": "Processing..."
+    },
+    "victimDetails": {
+      "name": "Victim Name",
+      "surname": "Victim Surname",
+      "email": "Victim Email",
+      "height": "Victim Height (cm)",
+      "weight": "Victim Weight (kg)",
+      "age": "Victim Age",
+      "profession": "Victim Profession",
+      "nationality": "Victim Nationality",
+      "phone": "Victim Phone Number",
+      "houseNumber": "Victim House Number",
+      "address": "Victim Address",
+      "city": "Victim City",
+      "country": "Victim Country"
+    },
+    "relativeDetails": {
+      "title": "Relative {number}",
+      "name": "Name",
+      "surname": "Surname",
+      "address": "Address",
+      "phone": "Phone",
+      "email": "Email"
+    },
+    "medicalInfo": {
+      "bloodGroup": "Blood Group",
+      "onDrugs": "On Drugs",
+      "drugsName": "Drugs Name",
+      "doctorPhone": "Doctor Phone Number",
+      "sickness": "Sickness",
+      "medication": "Medication",
+      "hospital": "Hospital Name"
+    },
+    "buttons": {
+      "submit": "Generate QR Code",
+      "submitting": "Creating...",
+      "edit": "Edit QR Code",
+      "editing": "Editing...",
+      "cancel": "Cancel"
+    },
+    "messages": {
+      "success": "QR code creation request submitted successfully! Awaiting approval.",
+      "editSuccess": "QR code updated successfully!",
+      "error": "An error occurred while processing the QR code.",
+      "loginRequired": "User not logged in."
+    },
+    "placeholders": {
+      "selectBloodGroup": "Select blood group",
+      "describeSickness": "Describe sickness",
+      "listMedications": "List any medications"
+    }
+  },
+  "MyScannedQRs": {
+    "title": "My Scanned QR Codes",
+    "notFoundTitle": "No Scanned QR Codes Found",
+    "table": {
+      "victimName": "Victim Name",
+      "victimEmail": "Victim Email",
+      "scannedAt": "Scanned At"
+    },
+    "dialog": {
+      "title": "QR Code Details",
+      "details": {
+        "victimName": "Victim Name",
+        "victimSurname": "Victim Surname",
+        "victimEmail": "Victim Email",
+        "victimHeight": "Victim Height",
+        "victimWeight": "Victim Weight",
+        "victimAge": "Victim Age",
+        "victimProfession": "Victim Profession",
+        "victimNationality": "Victim Nationality",
+        "victimTelNumber": "Victim Tel Number",
+        "victimHouseNumber": "Victim House Number",
+        "victimAddress": "Victim Address",
+        "victimCity": "Victim City",
+        "victimCountry": "Victim Country",
+        "bloodGroup": "Blood Group",
+        "onDrugs": "On Drugs",
+        "drugsName": "Drugs Name",
+        "doctorPhoneNumber": "Doctor Phone Number",
+        "sickness": "Sickness",
+        "medication": "Medication",
+        "hospitalName": "Hospital Name",
+        "status": "Status",
+        "createdAt": "Created At"
+      },
+      "relativeDetails": {
+        "title": "Relative {number}",
+        "name": "Name",
+        "surname": "Surname",
+        "address": "Address",
+        "phone": "Phone",
+        "email": "Email"
+      }
+    },
+    "messages": {
+      "loading": "Loading...",
+      "noScannedQRs": "You have not scanned any QR codes yet.",
+      "fetchError": "Failed to fetch QR codes."
+    }
+  },
+  "SaviorInfo": {
+    "title": "Saviors List",
+    "table": {
+      "saviorName": "Savior Name",
+      "email": "Email",
+      "victimName": "Victim Name",
+      "dateScanned": "Date Scanned"
+    },
+    "messages": {
+      "loading": "Loading...",
+      "noSaviors": "No Saviors Found",
+      "noSaviorsDesc": "No savior data is available for this user.",
+      "fetchError": "Failed to fetch savior data.",
+      "loginRequired": "User ID is missing. Please log in."
+    }
+  },
+  "VictimInfo": {
+    "title": "Victim Information",
+    "subtitle": "Details retrieved from the QR Code",
+    "loading": "Loading victim information...",
+    "noData": "No data found for this QR Code.",
+    "messages": {
+      "fetchError": "Unable to fetch victim information.",
+      "invalidQR": "Invalid QR Code ID.",
+      "notifySuccess": "Notifications sent successfully.",
+      "notifyError": "Failed to send notifications."
+    },
+    "fields": {
+      "name": "Victim Name",
+      "email": "Email",
+      "phone": "Phone",
+      "profession": "Profession",
+      "nationality": "Nationality",
+      "height": "Height",
+      "weight": "Weight",
+      "age": "Age",
+      "houseNumber": "House Number",
+      "address": "Address",
+      "city": "City",
+      "country": "Country",
+      "bloodGroup": "Blood Group",
+      "onMedication": "On Medication",
+      "sickness": "Sickness",
+      "onDrugs": "On Drugs",
+      "drugsName": "Drugs",
+      "doctorPhone": "Doctor's Phone",
+      "hospital": "Hospital",
+      "relative": "Relative",
+      "status": "Status"
+    }
+  },
+  "QRApprovals": {
+    "title": "QR Code Approval Requests",
+    "tableCaption": "A list of pending QR code approval requests.",
+    "headers": {
+      "victimName": "Victim Name",
+      "bloodGroup": "Blood Group",
+      "email": "Email",
+      "actions": "Actions"
+    },
+    "buttons": {
+      "approve": "Approve",
+      "reject": "Reject"
+    },
+    "messages": {
+      "loading": "Loading requests...",
+      "noRequests": "No pending QR requests found.",
+      "approveSuccess": "QR code approved successfully.",
+      "rejectSuccess": "QR code rejected successfully.",
+      "error": "Error updating QR code status."
+    }
+  },
+  "SaviorLinks": {
+    "title": "All Saviors and QR Codes",
+    "headers": {
+      "saviorName": "Savior Name",
+      "email": "Email",
+      "victimName": "Victim Name",
+      "victimEmail": "Victim Email",
+      "dateScanned": "Date Scanned"
+    },
+    "messages": {
+      "loading": "Loading...",
+      "noSaviors": "No Saviors Found",
+      "noSaviorsDesc": "No savior data is available for any user.",
+      "fetchError": "Failed to fetch savior data."
+    }
+  },
+  "QRScanner": {
+    "title": "Scan QR Code to Register",
+    "scannerTitle": "Scanner",
+    "messages": {
+      "invalidURL": "The QR code does not contain a valid URL.",
+      "invalidData": "The QR code does not contain valid registration data.",
+      "processingError": "Failed to process QR code."
+    }
+  },
+  "VerifyEmail": {
+    "title": {
+      "verified": "Email Verified",
+      "unverified": "Verify Email"
+    },
+    "messages": {
+      "success": "Email verified successfully!",
+      "error": "Failed to verify email."
+    }
+  },
+  "Login": {
+    "title": "Login",
+    "processing": "Processing",
+    "fields": {
+      "email": "Email",
+      "password": "Password"
+    },
+    "buttons": {
+      "login": "Login",
+      "loggingIn": "Logging in..."
+    },
+    "links": {
+      "signup": "Don't have an account? Sign up here"
+    },
+    "errors": {
+      "emptyFields": "Email and Password cannot be empty!",
+      "invalidCredentials": "Invalid email or password.",
+      "generalError": "An unexpected error occurred. Please try again."
+    }
+  },
+  "Signup": {
+    "title": "Signup",
+    "processing": "Processing",
+    "fields": {
+      "name": "Name",
+      "email": "Email",
+      "password": "Password"
+    },
+    "buttons": {
+      "signup": "Signup",
+      "signingUp": "Signing up..."
+    },
+    "links": {
+      "login": "Already have an account? Login here"
+    },
+    "errors": {
+      "registrationFailed": "Registration failed. Please try again."
+    }
+  }
+}

@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useToast } from "@/hooks/use-toast";
 import { useSession } from "next-auth/react";
 import { Button } from "@/components/ui/button";
+import { useTranslations } from "next-intl";
 import {
   Card,
   CardContent,
@@ -26,6 +27,7 @@ import {
 export default function GenerateQRPage() {
   const router = useRouter();
   const { toast } = useToast();
+  const t = useTranslations("GenerateQR");
 
   // Get the user session using NextAuth's useSession hook
   const { data: session } = useSession();
@@ -146,7 +148,7 @@ export default function GenerateQRPage() {
         toast({
           variant: "destructive",
           title: "Error",
-          description: "User not logged in.",
+          description: t("messages.loginRequired"),
         });
         return;
       }
@@ -172,8 +174,8 @@ export default function GenerateQRPage() {
       toast({
         title: isEditing ? "Success" : "Created",
         description: isEditing
-          ? "QR code updated successfully!"
-          : "QR code creation request submitted successfully! Awaiting approval.",
+          ? t("messages.editSuccess")
+          : t("messages.success"),
       });
 
       router.push("/dashboard"); // Redirect after success
@@ -184,7 +186,7 @@ export default function GenerateQRPage() {
       toast({
         variant: "destructive",
         title: "Error",
-        description: "An error occurred while processing the QR code.",
+        description: t("messages.error"),
       });
     } finally {
       setLoading(false);
@@ -197,10 +199,10 @@ export default function GenerateQRPage() {
         <CardHeader>
           <CardTitle className="text-2xl">
             {loading
-              ? "Processing..."
+              ? t("title.processing")
               : isEditing
-              ? "Edit QR Code"
-              : "Generate QR Code"}
+              ? t("title.edit")
+              : t("title.new")}
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -208,7 +210,7 @@ export default function GenerateQRPage() {
             <div className="grid w-full gap-4">
               {/* Victim Details */}
               <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="victimName">Victim Name</Label>
+                <Label htmlFor="victimName">{t("victimDetails.name")}</Label>
                 <Input
                   id="victimName"
                   type="text"
@@ -216,11 +218,13 @@ export default function GenerateQRPage() {
                   onChange={(e) =>
                     handleInputChange("victimName", e.target.value)
                   }
-                  placeholder="Enter victim's name"
+                  placeholder={t("victimDetails.name")}
                 />
               </div>
               <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="victimSurname">Victim Surname</Label>
+                <Label htmlFor="victimSurname">
+                  {t("victimDetails.surname")}
+                </Label>
                 <Input
                   id="victimSurname"
                   type="text"
@@ -228,11 +232,11 @@ export default function GenerateQRPage() {
                   onChange={(e) =>
                     handleInputChange("victimSurname", e.target.value)
                   }
-                  placeholder="Enter victim's surname"
+                  placeholder={t("victimDetails.surname")}
                 />
               </div>
               <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="victimEmail">Victim Email</Label>
+                <Label htmlFor="victimEmail">{t("victimDetails.email")}</Label>
                 <Input
                   id="victimEmail"
                   type="email"
@@ -240,11 +244,13 @@ export default function GenerateQRPage() {
                   onChange={(e) =>
                     handleInputChange("victimEmail", e.target.value)
                   }
-                  placeholder="Enter victim's email"
+                  placeholder={t("victimDetails.email")}
                 />
               </div>
               <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="victimHeight">Victim Height (cm)</Label>
+                <Label htmlFor="victimHeight">
+                  {t("victimDetails.height")}
+                </Label>
                 <Input
                   id="victimHeight"
                   type="number"
@@ -252,11 +258,13 @@ export default function GenerateQRPage() {
                   onChange={(e) =>
                     handleInputChange("victimHeight", e.target.value)
                   }
-                  placeholder="Enter victim's height"
+                  placeholder={t("victimDetails.height")}
                 />
               </div>
               <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="victimWeight">Victim Weight (kg)</Label>
+                <Label htmlFor="victimWeight">
+                  {t("victimDetails.weight")}
+                </Label>
                 <Input
                   id="victimWeight"
                   type="number"
@@ -264,11 +272,11 @@ export default function GenerateQRPage() {
                   onChange={(e) =>
                     handleInputChange("victimWeight", e.target.value)
                   }
-                  placeholder="Enter victim's weight"
+                  placeholder={t("victimDetails.weight")}
                 />
               </div>
               <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="victimAge">Victim Age</Label>
+                <Label htmlFor="victimAge">{t("victimDetails.age")}</Label>
                 <Input
                   id="victimAge"
                   type="number"
@@ -276,11 +284,13 @@ export default function GenerateQRPage() {
                   onChange={(e) =>
                     handleInputChange("victimAge", e.target.value)
                   }
-                  placeholder="Enter victim's age"
+                  placeholder={t("victimDetails.age")}
                 />
               </div>
               <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="victimProfession">Victim Profession</Label>
+                <Label htmlFor="victimProfession">
+                  {t("victimDetails.profession")}
+                </Label>
                 <Input
                   id="victimProfession"
                   type="text"
@@ -288,11 +298,13 @@ export default function GenerateQRPage() {
                   onChange={(e) =>
                     handleInputChange("victimProfession", e.target.value)
                   }
-                  placeholder="Enter victim's profession"
+                  placeholder={t("victimDetails.profession")}
                 />
               </div>
               <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="victimNationality">Victim Nationality</Label>
+                <Label htmlFor="victimNationality">
+                  {t("victimDetails.nationality")}
+                </Label>
                 <Input
                   id="victimNationality"
                   type="text"
@@ -300,11 +312,13 @@ export default function GenerateQRPage() {
                   onChange={(e) =>
                     handleInputChange("victimNationality", e.target.value)
                   }
-                  placeholder="Enter victim's nationality"
+                  placeholder={t("victimDetails.nationality")}
                 />
               </div>
               <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="victimTelNumber">Victim Phone Number</Label>
+                <Label htmlFor="victimTelNumber">
+                  {t("victimDetails.phone")}
+                </Label>
                 <Input
                   id="victimTelNumber"
                   type="text"
@@ -312,11 +326,13 @@ export default function GenerateQRPage() {
                   onChange={(e) =>
                     handleInputChange("victimTelNumber", e.target.value)
                   }
-                  placeholder="Enter victim's phone number"
+                  placeholder={t("victimDetails.phone")}
                 />
               </div>
               <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="victimHouseNumber">Victim House Number</Label>
+                <Label htmlFor="victimHouseNumber">
+                  {t("victimDetails.houseNumber")}
+                </Label>
                 <Input
                   id="victimHouseNumber"
                   type="text"
@@ -324,11 +340,13 @@ export default function GenerateQRPage() {
                   onChange={(e) =>
                     handleInputChange("victimHouseNumber", e.target.value)
                   }
-                  placeholder="Enter victim's house number"
+                  placeholder={t("victimDetails.houseNumber")}
                 />
               </div>
               <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="victimAddress">Victim Address</Label>
+                <Label htmlFor="victimAddress">
+                  {t("victimDetails.address")}
+                </Label>
                 <Input
                   id="victimAddress"
                   type="text"
@@ -336,11 +354,11 @@ export default function GenerateQRPage() {
                   onChange={(e) =>
                     handleInputChange("victimAddress", e.target.value)
                   }
-                  placeholder="Enter victim's address"
+                  placeholder={t("victimDetails.address")}
                 />
               </div>
               <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="victimCity">Victim City</Label>
+                <Label htmlFor="victimCity">{t("victimDetails.city")}</Label>
                 <Input
                   id="victimCity"
                   type="text"
@@ -348,11 +366,13 @@ export default function GenerateQRPage() {
                   onChange={(e) =>
                     handleInputChange("victimCity", e.target.value)
                   }
-                  placeholder="Enter victim's city"
+                  placeholder={t("victimDetails.city")}
                 />
               </div>
               <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="victimCountry">Victim Country</Label>
+                <Label htmlFor="victimCountry">
+                  {t("victimDetails.country")}
+                </Label>
                 <Input
                   id="victimCountry"
                   type="text"
@@ -360,13 +380,16 @@ export default function GenerateQRPage() {
                   onChange={(e) =>
                     handleInputChange("victimCountry", e.target.value)
                   }
-                  placeholder="Enter victim's country"
+                  placeholder={t("victimDetails.country")}
                 />
               </div>
 
               {/* Relative 1 Details */}
               <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="relative1Name">Relative 1 Name</Label>
+                <Label htmlFor="relative1Name">
+                  {t("relativeDetails.title", { number: 1 })}{" "}
+                  {t("relativeDetails.name")}
+                </Label>
                 <Input
                   id="relative1Name"
                   type="text"
@@ -378,7 +401,10 @@ export default function GenerateQRPage() {
                 />
               </div>
               <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="relative1Surname">Relative 1 Surname</Label>
+                <Label htmlFor="relative1Surname">
+                  {t("relativeDetails.title", { number: 1 })}{" "}
+                  {t("relativeDetails.surname")}
+                </Label>
                 <Input
                   id="relative1Surname"
                   type="text"
@@ -390,7 +416,10 @@ export default function GenerateQRPage() {
                 />
               </div>
               <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="relative1Address">Relative 1 Address</Label>
+                <Label htmlFor="relative1Address">
+                  {t("relativeDetails.title", { number: 1 })}{" "}
+                  {t("relativeDetails.address")}
+                </Label>
                 <Input
                   id="relative1Address"
                   type="text"
@@ -402,7 +431,10 @@ export default function GenerateQRPage() {
                 />
               </div>
               <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="relative1Phone">Relative 1 Phone</Label>
+                <Label htmlFor="relative1Phone">
+                  {t("relativeDetails.title", { number: 1 })}{" "}
+                  {t("relativeDetails.phone")}
+                </Label>
                 <Input
                   id="relative1Phone"
                   type="text"
@@ -414,7 +446,10 @@ export default function GenerateQRPage() {
                 />
               </div>
               <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="relative1Email">Relative 1 Email</Label>
+                <Label htmlFor="relative1Email">
+                  {t("relativeDetails.title", { number: 1 })}{" "}
+                  {t("relativeDetails.email")}
+                </Label>
                 <Input
                   id="relative1Email"
                   type="email"
@@ -428,7 +463,10 @@ export default function GenerateQRPage() {
 
               {/* Relative 2 Details */}
               <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="relative2Name">Relative 2 Name</Label>
+                <Label htmlFor="relative2Name">
+                  {t("relativeDetails.title", { number: 2 })}{" "}
+                  {t("relativeDetails.name")}
+                </Label>
                 <Input
                   id="relative2Name"
                   type="text"
@@ -440,7 +478,10 @@ export default function GenerateQRPage() {
                 />
               </div>
               <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="relative2Surname">Relative 2 Surname</Label>
+                <Label htmlFor="relative2Surname">
+                  {t("relativeDetails.title", { number: 2 })}{" "}
+                  {t("relativeDetails.surname")}
+                </Label>
                 <Input
                   id="relative2Surname"
                   type="text"
@@ -452,7 +493,10 @@ export default function GenerateQRPage() {
                 />
               </div>
               <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="relative2Address">Relative 2 Address</Label>
+                <Label htmlFor="relative2Address">
+                  {t("relativeDetails.title", { number: 2 })}{" "}
+                  {t("relativeDetails.address")}
+                </Label>
                 <Input
                   id="relative2Address"
                   type="text"
@@ -464,7 +508,10 @@ export default function GenerateQRPage() {
                 />
               </div>
               <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="relative2Phone">Relative 2 Phone</Label>
+                <Label htmlFor="relative2Phone">
+                  {t("relativeDetails.title", { number: 2 })}{" "}
+                  {t("relativeDetails.phone")}
+                </Label>
                 <Input
                   id="relative2Phone"
                   type="text"
@@ -476,7 +523,10 @@ export default function GenerateQRPage() {
                 />
               </div>
               <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="relative2Email">Relative 2 Email</Label>
+                <Label htmlFor="relative2Email">
+                  {t("relativeDetails.title", { number: 2 })}{" "}
+                  {t("relativeDetails.email")}
+                </Label>
                 <Input
                   id="relative2Email"
                   type="email"
@@ -490,7 +540,10 @@ export default function GenerateQRPage() {
 
               {/* Relative 3 Details */}
               <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="relative3Name">Relative 3 Name</Label>
+                <Label htmlFor="relative3Name">
+                  {t("relativeDetails.title", { number: 3 })}{" "}
+                  {t("relativeDetails.name")}
+                </Label>
                 <Input
                   id="relative3Name"
                   type="text"
@@ -502,7 +555,10 @@ export default function GenerateQRPage() {
                 />
               </div>
               <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="relative3Surname">Relative 3 Surname</Label>
+                <Label htmlFor="relative3Surname">
+                  {t("relativeDetails.title", { number: 3 })}{" "}
+                  {t("relativeDetails.surname")}
+                </Label>
                 <Input
                   id="relative3Surname"
                   type="text"
@@ -514,7 +570,10 @@ export default function GenerateQRPage() {
                 />
               </div>
               <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="relative3Address">Relative 3 Address</Label>
+                <Label htmlFor="relative3Address">
+                  {t("relativeDetails.title", { number: 3 })}{" "}
+                  {t("relativeDetails.address")}
+                </Label>
                 <Input
                   id="relative3Address"
                   type="text"
@@ -526,7 +585,10 @@ export default function GenerateQRPage() {
                 />
               </div>
               <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="relative3Phone">Relative 3 Phone</Label>
+                <Label htmlFor="relative3Phone">
+                  {t("relativeDetails.title", { number: 3 })}{" "}
+                  {t("relativeDetails.phone")}
+                </Label>
                 <Input
                   id="relative3Phone"
                   type="text"
@@ -538,7 +600,10 @@ export default function GenerateQRPage() {
                 />
               </div>
               <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="relative3Email">Relative 3 Email</Label>
+                <Label htmlFor="relative3Email">
+                  {t("relativeDetails.title", { number: 3 })}{" "}
+                  {t("relativeDetails.email")}
+                </Label>
                 <Input
                   id="relative3Email"
                   type="email"
@@ -552,7 +617,9 @@ export default function GenerateQRPage() {
 
               {/* Medical Information */}
               <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="bloodGroup">Blood Group</Label>
+                <Label htmlFor="bloodGroup">
+                  {t("medicalInfo.bloodGroup")}
+                </Label>
                 <Select
                   onValueChange={(value) =>
                     handleInputChange("bloodGroup", value)
@@ -560,7 +627,9 @@ export default function GenerateQRPage() {
                   value={qrDetails.bloodGroup}
                 >
                   <SelectTrigger>
-                    <SelectValue placeholder="Select blood group" />
+                    <SelectValue
+                      placeholder={t("placeholders.selectBloodGroup")}
+                    />
                   </SelectTrigger>
                   <SelectContent>
                     {["A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-"].map(
@@ -574,7 +643,7 @@ export default function GenerateQRPage() {
                 </Select>
               </div>
               <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="onDrugs">On Drugs</Label>
+                <Label htmlFor="onDrugs">{t("medicalInfo.onDrugs")}</Label>
                 <Input
                   id="onDrugs"
                   type="checkbox"
@@ -585,7 +654,7 @@ export default function GenerateQRPage() {
                 />
               </div>
               <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="drugsName">Drugs Name</Label>
+                <Label htmlFor="drugsName">{t("medicalInfo.drugsName")}</Label>
                 <Input
                   id="drugsName"
                   type="text"
@@ -597,7 +666,9 @@ export default function GenerateQRPage() {
                 />
               </div>
               <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="doctorPhoneNumber">Doctor Phone Number</Label>
+                <Label htmlFor="doctorPhoneNumber">
+                  {t("medicalInfo.doctorPhone")}
+                </Label>
                 <Input
                   id="doctorPhoneNumber"
                   type="text"
@@ -609,31 +680,35 @@ export default function GenerateQRPage() {
                 />
               </div>
               <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="sickness">Sickness</Label>
+                <Label htmlFor="sickness">{t("medicalInfo.sickness")}</Label>
                 <Textarea
                   id="sickness"
                   value={qrDetails.sickness}
                   onChange={(e) =>
                     handleInputChange("sickness", e.target.value)
                   }
-                  placeholder="Describe sickness"
+                  placeholder={t("placeholders.describeSickness")}
                   maxLength={200} // Limit to 200 characters
                 />
               </div>
               <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="medication">Medication</Label>
+                <Label htmlFor="medication">
+                  {t("medicalInfo.medication")}
+                </Label>
                 <Textarea
                   id="medication"
                   value={qrDetails.medication}
                   onChange={(e) =>
                     handleInputChange("medication", e.target.value)
                   }
-                  placeholder="List any medications"
+                  placeholder={t("placeholders.listMedications")}
                   maxLength={200} // Limit to 200 characters
                 />
               </div>
               <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="hospitalName">Hospital Name</Label>
+                <Label htmlFor="hospitalName">
+                  {t("medicalInfo.hospital")}
+                </Label>
                 <Input
                   id="hospitalName"
                   type="text"
@@ -651,18 +726,18 @@ export default function GenerateQRPage() {
           <Button onClick={handleSubmit} disabled={loading}>
             {loading
               ? isEditing
-                ? "Editing..."
-                : "Creating..."
+                ? t("buttons.editing")
+                : t("buttons.submitting")
               : isEditing
-              ? "Edit QR Code"
-              : "Generate QR Code"}
+              ? t("buttons.edit")
+              : t("buttons.submit")}
           </Button>
           <Button
             variant="outline"
             onClick={() => router.push("/dashboard")}
             className="w-full sm:w-auto ml-2"
           >
-            Cancel
+            {t("buttons.cancel")}
           </Button>
         </CardFooter>
       </Card>

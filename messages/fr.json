@@ -1,0 +1,305 @@
+{
+  "Dashboard": {
+    "dashboardTitle": "Tableau de bord des codes QR",
+    "approvedTitle": "Codes QR approuvés",
+    "pendingTitle": "Codes QR en attente",
+    "table": {
+      "name": "Nom",
+      "status": "Statut",
+      "actions": "Actions"
+    },
+    "status": {
+      "approved": "Approuvé",
+      "pending": "En attente"
+    },
+    "buttons": {
+      "options": "Options",
+      "viewQR": "Voir QR",
+      "downloadQR": "Télécharger QR",
+      "edit": "Modifier",
+      "delete": "Supprimer",
+      "cancel": "Annuler",
+      "confirm": "Confirmer"
+    },
+    "messages": {
+      "noApproved": "Aucun code QR approuvé trouvé.",
+      "noPending": "Aucun code QR en attente trouvé.",
+      "deleteDialog": {
+        "title": "Confirmation de suppression",
+        "description": "Êtes-vous sûr de vouloir supprimer ce code QR ?"
+      },
+      "downloadSuccess": "Le code QR a été téléchargé au format PDF.",
+      "downloadError": "Échec du téléchargement du code QR au format PDF."
+    }
+  },
+  "Sidebar": {
+    "navigation": "Navigation",
+    "admin": "Administration",
+    "menu": {
+      "dashboard": "Tableau de bord",
+      "generateQR": "Générer QR",
+      "saviorInfo": "Info Sauveteur",
+      "myScannedQRs": "Mes QR scannés",
+      "scanQR": "Scanner QR",
+      "approveReject": "Approuver/Rejeter QR",
+      "saviorLinks": "Liens Sauveteur",
+      "logout": "Déconnexion"
+    },
+    "messages": {
+      "logoutSuccess": "Déconnexion réussie !",
+      "logoutError": "Échec de la déconnexion. Veuillez réessayer."
+    }
+  },
+  "GenerateQR": {
+    "title": {
+      "new": "Générer un Code QR",
+      "edit": "Modifier le Code QR",
+      "processing": "Traitement en cours..."
+    },
+    "victimDetails": {
+      "name": "Nom de la victime",
+      "surname": "Prénom de la victime",
+      "email": "Email de la victime",
+      "height": "Taille de la victime (cm)",
+      "weight": "Poids de la victime (kg)",
+      "age": "Âge de la victime",
+      "profession": "Profession de la victime",
+      "nationality": "Nationalité de la victime",
+      "phone": "Numéro de téléphone de la victime",
+      "houseNumber": "Numéro de maison de la victime",
+      "address": "Adresse de la victime",
+      "city": "Ville de la victime",
+      "country": "Pays de la victime"
+    },
+    "relativeDetails": {
+      "title": "Parent {number}",
+      "name": "Nom",
+      "surname": "Prénom",
+      "address": "Adresse",
+      "phone": "Téléphone",
+      "email": "Email"
+    },
+    "medicalInfo": {
+      "bloodGroup": "Groupe sanguin",
+      "onDrugs": "Sous médicaments",
+      "drugsName": "Nom des médicaments",
+      "doctorPhone": "Numéro de téléphone du médecin",
+      "sickness": "Maladie",
+      "medication": "Médication",
+      "hospital": "Nom de l'hôpital"
+    },
+    "buttons": {
+      "submit": "Générer le Code QR",
+      "submitting": "Création...",
+      "edit": "Modifier le Code QR",
+      "editing": "Modification...",
+      "cancel": "Annuler"
+    },
+    "messages": {
+      "success": "Demande de création de code QR soumise avec succès ! En attente d'approbation.",
+      "editSuccess": "Code QR mis à jour avec succès !",
+      "error": "Une erreur s'est produite lors du traitement du code QR.",
+      "loginRequired": "Utilisateur non connecté."
+    },
+    "placeholders": {
+      "selectBloodGroup": "Sélectionnez le groupe sanguin",
+      "describeSickness": "Décrivez la maladie",
+      "listMedications": "Listez les médicaments"
+    }
+  },
+  "MyScannedQRs": {
+    "title": "Mes Codes QR Scannés",
+    "notFoundTitle": "Aucun code QR analysé trouvé",
+    "table": {
+      "victimName": "Nom de la victime",
+      "victimEmail": "Email de la victime",
+      "scannedAt": "Scanné le"
+    },
+    "dialog": {
+      "title": "Détails du Code QR",
+      "details": {
+        "victimName": "Nom de la victime",
+        "victimSurname": "Prénom de la victime",
+        "victimEmail": "Email de la victime",
+        "victimHeight": "Taille de la victime",
+        "victimWeight": "Poids de la victime",
+        "victimAge": "Âge de la victime",
+        "victimProfession": "Profession de la victime",
+        "victimNationality": "Nationalité de la victime",
+        "victimTelNumber": "Numéro de téléphone de la victime",
+        "victimHouseNumber": "Numéro de maison de la victime",
+        "victimAddress": "Adresse de la victime",
+        "victimCity": "Ville de la victime",
+        "victimCountry": "Pays de la victime",
+        "bloodGroup": "Groupe sanguin",
+        "onDrugs": "Sous médicaments",
+        "drugsName": "Nom des médicaments",
+        "doctorPhoneNumber": "Numéro de téléphone du médecin",
+        "sickness": "Maladie",
+        "medication": "Médication",
+        "hospitalName": "Nom de l'hôpital",
+        "status": "Statut",
+        "createdAt": "Créé le"
+      },
+      "relativeDetails": {
+        "title": "Parent {number}",
+        "name": "Nom",
+        "surname": "Prénom",
+        "address": "Adresse",
+        "phone": "Téléphone",
+        "email": "Email"
+      }
+    },
+    "messages": {
+      "loading": "Chargement...",
+      "noScannedQRs": "Vous n'avez pas encore scanné de codes QR.",
+      "fetchError": "Impossible de récupérer les codes QR."
+    }
+  },
+  "SaviorInfo": {
+    "title": "Liste des Sauveteurs",
+    "table": {
+      "saviorName": "Nom du Sauveteur",
+      "email": "Email",
+      "victimName": "Nom de la Victime",
+      "dateScanned": "Date de Scan"
+    },
+    "messages": {
+      "loading": "Chargement...",
+      "noSaviors": "Aucun Sauveteur Trouvé",
+      "noSaviorsDesc": "Aucune donnée de sauveteur n'est disponible pour cet utilisateur.",
+      "fetchError": "Impossible de récupérer les données des sauveteurs.",
+      "loginRequired": "ID utilisateur manquant. Veuillez vous connecter."
+    }
+  },
+  "VictimInfo": {
+    "title": "Information sur la Victime",
+    "subtitle": "Détails récupérés du Code QR",
+    "loading": "Chargement des informations de la victime...",
+    "noData": "Aucune donnée trouvée pour ce Code QR.",
+    "messages": {
+      "fetchError": "Impossible de récupérer les informations de la victime.",
+      "invalidQR": "ID de Code QR invalide.",
+      "notifySuccess": "Notifications envoyées avec succès.",
+      "notifyError": "Échec de l'envoi des notifications."
+    },
+    "fields": {
+      "name": "Nom de la victime",
+      "email": "Email",
+      "phone": "Téléphone",
+      "profession": "Profession",
+      "nationality": "Nationalité",
+      "height": "Taille",
+      "weight": "Poids",
+      "age": "Âge",
+      "houseNumber": "Numéro de maison",
+      "address": "Adresse",
+      "city": "Ville",
+      "country": "Pays",
+      "bloodGroup": "Groupe sanguin",
+      "onMedication": "Sous médicaments",
+      "sickness": "Maladie",
+      "onDrugs": "Sous médicaments",
+      "drugsName": "Médicaments",
+      "doctorPhone": "Téléphone du médecin",
+      "hospital": "Hôpital",
+      "relative": "Parent",
+      "status": "Statut"
+    }
+  },
+  "QRApprovals": {
+    "title": "Demandes d'approbation de QR Code",
+    "tableCaption": "Liste des demandes d'approbation de QR Code en attente.",
+    "headers": {
+      "victimName": "Nom de la victime",
+      "bloodGroup": "Groupe sanguin",
+      "email": "Email",
+      "actions": "Actions"
+    },
+    "buttons": {
+      "approve": "Approuver",
+      "reject": "Rejeter"
+    },
+    "messages": {
+      "loading": "Chargement des demandes...",
+      "noRequests": "Aucune demande de QR en attente.",
+      "approveSuccess": "QR code approuvé avec succès.",
+      "rejectSuccess": "QR code rejeté avec succès.",
+      "error": "Erreur lors de la mise à jour du statut du QR code."
+    }
+  },
+  "SaviorLinks": {
+    "title": "Tous les Sauveteurs et Codes QR",
+    "headers": {
+      "saviorName": "Nom du Sauveteur",
+      "email": "Email",
+      "victimName": "Nom de la Victime",
+      "victimEmail": "Email de la Victime",
+      "dateScanned": "Date de Scan"
+    },
+    "messages": {
+      "loading": "Chargement...",
+      "noSaviors": "Aucun Sauveteur Trouvé",
+      "noSaviorsDesc": "Aucune donnée de sauveteur n'est disponible pour aucun utilisateur.",
+      "fetchError": "Échec de la récupération des données des sauveteurs."
+    }
+  },
+  "QRScanner": {
+    "title": "Scanner le code QR pour s'inscrire",
+    "scannerTitle": "Scanner",
+    "messages": {
+      "invalidURL": "Le QR code ne contient pas une URL valide.",
+      "invalidData": "Le QR code ne contient pas de données d'inscription valides.",
+      "processingError": "Échec du traitement du code QR."
+    }
+  },
+  "VerifyEmail": {
+    "title": {
+      "verified": "Email Vérifié",
+      "unverified": "Vérifier l'Email"
+    },
+    "messages": {
+      "success": "Email vérifié avec succès !",
+      "error": "Échec de la vérification de l'email."
+    }
+  },
+  "Login": {
+    "title": "Connexion",
+    "processing": "Traitement",
+    "fields": {
+      "email": "Email",
+      "password": "Mot de passe"
+    },
+    "buttons": {
+      "login": "Se connecter",
+      "loggingIn": "Connexion en cours..."
+    },
+    "links": {
+      "signup": "Pas de compte ? Inscrivez-vous ici"
+    },
+    "errors": {
+      "emptyFields": "L'email et le mot de passe ne peuvent pas être vides !",
+      "invalidCredentials": "Email ou mot de passe incorrect.",
+      "generalError": "Une erreur inattendue est survenue. Veuillez réessayer."
+    }
+  },
+  "Signup": {
+    "title": "Inscription",
+    "processing": "Traitement",
+    "fields": {
+      "name": "Nom",
+      "email": "Email",
+      "password": "Mot de passe"
+    },
+    "buttons": {
+      "signup": "S'inscrire",
+      "signingUp": "Inscription en cours..."
+    },
+    "links": {
+      "login": "Déjà un compte ? Connectez-vous ici"
+    },
+    "errors": {
+      "registrationFailed": "Échec de l'inscription. Veuillez réessayer."
+    }
+  }
+}

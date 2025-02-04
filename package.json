@@ -40,6 +40,7 @@
     "next": "15.1.5",
     "next-auth": "^4.24.11",
     "next-cloudinary": "^6.16.0",
+    "next-intl": "^3.26.3",
     "nodemailer": "^6.9.16",
     "postcss": "8.5.1",
     "prisma": "^6.2.1",

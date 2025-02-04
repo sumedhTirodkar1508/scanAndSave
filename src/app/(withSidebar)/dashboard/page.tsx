@@ -4,6 +4,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { ChevronDown } from "lucide-react";
 import { QrRequest } from "@/app/types/qrResquests";
+import { useTranslations } from "next-intl";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import {
@@ -45,6 +46,7 @@ export default function DashboardPage() {
   const [deletingQRCodeId, setDeletingQRCodeId] = useState<string | null>(null); // State for the QR code to delete
   const { toast } = useToast(); // Access toast hook
   const router = useRouter(); // Use router for redirection
+  const t = useTranslations("Dashboard");
 
   // Fetch QR codes from the backend
   useEffect(() => {
@@ -168,18 +170,20 @@ export default function DashboardPage() {
 
   return (
     <div className="flex flex-col items-center py-6">
-      <h1 className="text-xl font-bold mb-4">QR Code Dashboard</h1>
+      <h1 className="text-xl font-bold mb-4">{t("dashboardTitle")}</h1>
       <Card className="w-full mb-4">
         <CardHeader>
-          <CardTitle>Approved QR Codes</CardTitle>
+          <CardTitle>{t("approvedTitle")}</CardTitle>
         </CardHeader>
         <CardContent>
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>Name</TableHead>
-                <TableHead>Status</TableHead>
-                <TableHead className="text-center">Actions</TableHead>
+                <TableHead>{t("table.name")}</TableHead>
+                <TableHead>{t("table.status")}</TableHead>
+                <TableHead className="text-center">
+                  {t("table.actions")}
+                </TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -187,12 +191,14 @@ export default function DashboardPage() {
                 approvedQRCodes.map((qr) => (
                   <TableRow key={qr.id}>
                     <TableCell>{qr.victimName}</TableCell>
-                    <TableCell>{qr.status}</TableCell>
+                    <TableCell>
+                      {t(`status.${qr.status.toLowerCase()}`)}
+                    </TableCell>
                     <TableCell className="text-center">
                       <DropdownMenu>
                         <DropdownMenuTrigger asChild>
                           <Button variant="ghost">
-                            Options <ChevronDown />
+                            {t("buttons.options")} <ChevronDown />
                           </Button>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent>
@@ -202,7 +208,7 @@ export default function DashboardPage() {
                               handleAction("view", qr.id, qr.qrCodeUrl)
                             }
                           >
-                            View QR
+                            {t("buttons.viewQR")}
                           </DropdownMenuItem>
                           <DropdownMenuItem
                             onClick={() =>
@@ -210,17 +216,17 @@ export default function DashboardPage() {
                               handleAction("download", qr.id, qr.qrCodeUrl)
                             }
                           >
-                            Download QR
+                            {t("buttons.downloadQR")}
                           </DropdownMenuItem>
                           <DropdownMenuItem
                             onClick={() => handleAction("edit", qr.id)}
                           >
-                            Edit
+                            {t("buttons.edit")}
                           </DropdownMenuItem>
                           <DropdownMenuItem
                             onClick={() => handleAction("delete", qr.id)}
                           >
-                            Delete
+                            {t("buttons.delete")}
                           </DropdownMenuItem>
                         </DropdownMenuContent>
                       </DropdownMenu>
@@ -230,7 +236,7 @@ export default function DashboardPage() {
               ) : (
                 <TableRow>
                   <TableCell colSpan={3} className="text-center">
-                    No approved QR Codes found.
+                    {t("messages.noApproved")}
                   </TableCell>
                 </TableRow>
               )}
@@ -240,15 +246,17 @@ export default function DashboardPage() {
       </Card>
       <Card className="w-full">
         <CardHeader>
-          <CardTitle>Pending QR Codes</CardTitle>
+          <CardTitle>{t("pendingTitle")}</CardTitle>
         </CardHeader>
         <CardContent>
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>Name</TableHead>
-                <TableHead>Status</TableHead>
-                <TableHead className="text-center">Actions</TableHead>
+                <TableHead>{t("table.name")}</TableHead>
+                <TableHead>{t("table.status")}</TableHead>
+                <TableHead className="text-center">
+                  {t("table.actions")}
+                </TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -256,24 +264,26 @@ export default function DashboardPage() {
                 pendingQRCodes.map((qr) => (
                   <TableRow key={qr.id}>
                     <TableCell>{qr.victimName}</TableCell>
-                    <TableCell>{qr.status}</TableCell>
+                    <TableCell>
+                      {t(`status.${qr.status.toLowerCase()}`)}
+                    </TableCell>
                     <TableCell className="text-center">
                       <DropdownMenu>
                         <DropdownMenuTrigger asChild>
                           <Button variant="ghost">
-                            Options <ChevronDown />
+                            {t("buttons.options")} <ChevronDown />
                           </Button>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent>
                           <DropdownMenuItem
                             onClick={() => handleAction("edit", qr.id)}
                           >
-                            Edit
+                            {t("buttons.edit")}
                           </DropdownMenuItem>
                           <DropdownMenuItem
                             onClick={() => handleAction("delete", qr.id)}
                           >
-                            Delete
+                            {t("buttons.delete")}
                           </DropdownMenuItem>
                         </DropdownMenuContent>
                       </DropdownMenu>
@@ -283,7 +293,7 @@ export default function DashboardPage() {
               ) : (
                 <TableRow>
                   <TableCell colSpan={3} className="text-center">
-                    No pending QR Codes found.
+                    {t("messages.noPending")}
                   </TableCell>
                 </TableRow>
               )}
@@ -301,19 +311,19 @@ export default function DashboardPage() {
           <Button className="hidden">Trigger Dialog</Button>
         </DialogTrigger>
         <DialogContent>
-          <DialogTitle>Confirm Deletion</DialogTitle>
+          <DialogTitle>{t("messages.deleteDialog.title")}</DialogTitle>
           <DialogDescription>
-            Are you sure you want to delete this QR Code?
+            {t("messages.deleteDialog.description")}
           </DialogDescription>
           <DialogFooter>
             <Button
               variant="outline"
               onClick={() => setDeletingQRCodeId(null)} // Close without deleting
             >
-              Cancel
+              {t("buttons.cancel")}
             </Button>
             <Button variant="destructive" onClick={handleDeleteConfirm}>
-              Confirm
+              {t("buttons.confirm")}
             </Button>
           </DialogFooter>
         </DialogContent>

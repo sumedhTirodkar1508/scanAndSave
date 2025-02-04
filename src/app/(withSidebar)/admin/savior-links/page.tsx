@@ -5,6 +5,7 @@ import axios from "axios";
 import { useSession } from "next-auth/react";
 import { useToast } from "@/hooks/use-toast";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Table,
@@ -21,6 +22,7 @@ export default function AdminSaviorsPage() {
   const { data: session, status } = useSession();
   const { toast } = useToast();
   const router = useRouter();
+  const t = useTranslations("SaviorLinks");
   const [saviors, setSaviors] = useState<SaviorQRCode[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -45,7 +47,7 @@ export default function AdminSaviorsPage() {
         toast({
           variant: "destructive",
           title: "Error",
-          description: "Failed to fetch savior data.",
+          description: t("messages.fetchError"),
         });
       })
       .finally(() => setLoading(false));
@@ -53,23 +55,23 @@ export default function AdminSaviorsPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-screen">
-        Loading...
+        {t("messages.loading")}
       </div>
     );
   }
 
   return (
     <div className="container mx-auto py-8">
-      <h1 className="text-2xl font-bold mb-6">All Saviors and QR Codes</h1>
+      <h1 className="text-2xl font-bold mb-6">{t("title")}</h1>
       {saviors.length > 0 ? (
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead>Savior Name</TableHead>
-              <TableHead>Email</TableHead>
-              <TableHead>Victim Name</TableHead>
-              <TableHead>Victim Email</TableHead>
-              <TableHead>Date Scanned</TableHead>
+              <TableHead>{t("headers.saviorName")}</TableHead>
+              <TableHead>{t("headers.email")}</TableHead>
+              <TableHead>{t("headers.victimName")}</TableHead>
+              <TableHead>{t("headers.victimEmail")}</TableHead>
+              <TableHead>{t("headers.dateScanned")}</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -83,7 +85,7 @@ export default function AdminSaviorsPage() {
                           ? savior.profileImageUrl
                           : "/scanneSauverLogo.jpg" // Fallback image
                       }
-                      alt={savior.name || "Savior"}
+                      alt={savior.name || t("headers.saviorName")}
                     />
                     <AvatarFallback>
                       {savior.name?.charAt(0) || "?"}
@@ -108,12 +110,10 @@ export default function AdminSaviorsPage() {
       ) : (
         <Card>
           <CardHeader>
-            <CardTitle>No Saviors Found</CardTitle>
+            <CardTitle>{t("messages.noSaviors")}</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-muted">
-              No savior data is available for any user.
-            </p>
+            <p className="text-muted">{t("messages.noSaviorsDesc")}</p>
           </CardContent>
         </Card>
       )}

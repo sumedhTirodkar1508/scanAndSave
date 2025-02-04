@@ -1,6 +1,7 @@
 import React, { Suspense } from "react";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -28,7 +29,7 @@ export default function DashboardLayout({
         {/* SidebarInset to contain breadcrumbs and main content */}
         <SidebarInset className="flex flex-col w-full">
           {/* Header with Breadcrumbs */}
-          <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
+          <header className="flex h-16 shrink-0 items-center justify-between transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
             <div className="flex items-center gap-2 px-4">
               <SidebarTrigger className="-ml-1" />
               <Separator orientation="vertical" className="mr-2 h-4" />
@@ -45,6 +46,9 @@ export default function DashboardLayout({
                   </BreadcrumbItem> */}
                 </BreadcrumbList>
               </Breadcrumb>
+            </div>
+            <div className="pr-4">
+              <LanguageSwitcher />
             </div>
           </header>
 

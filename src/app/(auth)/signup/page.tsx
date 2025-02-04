@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import axios from "axios";
 import { useSession, signIn } from "next-auth/react";
 import { useToast } from "@/hooks/use-toast";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -20,6 +21,7 @@ import { Label } from "@/components/ui/label";
 export default function SignupPage() {
   const router = useRouter();
   const { toast } = useToast();
+  const t = useTranslations("Signup");
 
   const searchParams = useSearchParams(); // Extract query params
   const qrCodeId = searchParams.get("qrCodeId"); // Get `qrCodeId` if present
@@ -149,82 +151,125 @@ export default function SignupPage() {
   }, [user]);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
-      <Card className="w-[350px]">
-        <CardHeader>
-          <div className="flex justify-center mb-4">
-            <Avatar style={{ height: "10rem", width: "10rem" }}>
-              <AvatarImage src="../../scanneSauverLogo.jpg" alt="Logo" />
-              <AvatarFallback>X</AvatarFallback>
-            </Avatar>
-          </div>
-          <CardTitle className="text-3xl text-center">
-            {loading ? "Processing" : "Signup"}
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <form>
-            <div className="grid w-full items-center gap-4">
-              <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="name">Name</Label>
-                <Input
-                  className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-black"
-                  id="name"
-                  type="text"
-                  autoComplete="name"
-                  value={user.name}
-                  onChange={(e) => setUser({ ...user, name: e.target.value })}
-                  placeholder="name"
-                />
+    <section className="position-relative bg-[url('/assets/login-bg.jpg')] bg-center bg-cover">
+      <div className="absolute inset-0 bg-black opacity-75"></div>
+      <div className="container-fluid relative">
+        <div className="grid grid-cols-1">
+          <div className="lg:col-span-4">
+            <div className="flex flex-col min-h-screen md:px-12 py-12 px-3">
+              {/* <!-- Start Logo --> */}
+              <div className="text-center mx-auto">
+                <a href="/">
+                  <div className="flex justify-center mb-4">
+                    <Avatar style={{ height: "5rem", width: "5rem" }}>
+                      <AvatarImage
+                        src="../../scanneSauverLogo.jpg"
+                        alt="Logo"
+                      />
+                      <AvatarFallback>X</AvatarFallback>
+                    </Avatar>
+                  </div>
+                </a>
               </div>
-              <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="email">Email</Label>
-                <Input
-                  className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-black"
-                  id="email"
-                  type="text"
-                  autoComplete="email"
-                  value={user.email}
-                  onChange={(e) => setUser({ ...user, email: e.target.value })}
-                  placeholder="email"
-                />
+              {/* <!-- End Logo --> */}
+
+              {/* <!-- Start Content --> */}
+              <div className="my-auto">
+                <div className="grid grid-cols-1 w-full max-w-sm m-auto px-6 py-4">
+                  <Card className="w-[350px]">
+                    <CardHeader>
+                      <CardTitle className="text-3xl text-center">
+                        {loading ? t("processing") : t("title")}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <form>
+                        <div className="grid w-full items-center gap-4">
+                          <div className="flex flex-col space-y-1.5">
+                            <Label htmlFor="name">{t("fields.name")}</Label>
+                            <Input
+                              className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-black"
+                              id="name"
+                              type="text"
+                              autoComplete="name"
+                              value={user.name}
+                              onChange={(e) =>
+                                setUser({ ...user, name: e.target.value })
+                              }
+                              placeholder={t("fields.name")}
+                            />
+                          </div>
+                          <div className="flex flex-col space-y-1.5">
+                            <Label htmlFor="email">{t("fields.email")}</Label>
+                            <Input
+                              className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-black"
+                              id="email"
+                              type="text"
+                              autoComplete="email"
+                              value={user.email}
+                              onChange={(e) =>
+                                setUser({ ...user, email: e.target.value })
+                              }
+                              placeholder={t("fields.email")}
+                            />
+                          </div>
+                          <div className="flex flex-col space-y-1.5">
+                            <Label htmlFor="password">
+                              {t("fields.password")}
+                            </Label>
+                            <Input
+                              className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-black"
+                              id="password"
+                              type="password"
+                              autoComplete="current-password"
+                              value={user.password}
+                              onChange={(e) =>
+                                setUser({ ...user, password: e.target.value })
+                              }
+                              placeholder={t("fields.password")}
+                            />
+                          </div>
+                        </div>
+                      </form>
+                    </CardContent>
+                    <CardFooter className="flex flex-col">
+                      <Button
+                        onClick={onSignup}
+                        disabled={buttonDisabled || loading}
+                        className="w-full bg-green-600 text-white rounded-full py-3 hover:bg-green-700 transition-colors animate-none hover:animate-bounceHover"
+                      >
+                        {loading ? t("buttons.signingUp") : t("buttons.signup")}
+                      </Button>
+                      <Button
+                        variant="link"
+                        asChild
+                        className="text-blue-500 hover:underline mt-5"
+                      >
+                        <Link
+                          href={
+                            qrCodeId ? `/login?qrCodeId=${qrCodeId}` : "/login"
+                          }
+                        >
+                          {t("links.login")}
+                        </Link>
+                      </Button>
+                    </CardFooter>
+                  </Card>
+                </div>
               </div>
-              <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="password">Password</Label>
-                <Input
-                  className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-black"
-                  id="password"
-                  type="password"
-                  autoComplete="current-password"
-                  value={user.password}
-                  onChange={(e) =>
-                    setUser({ ...user, password: e.target.value })
-                  }
-                  placeholder="password"
-                />
+              {/* <!-- End Content --> */}
+
+              {/* <!-- Start Footer --> */}
+              <div className="text-center">
+                <p className="text-gray-400">
+                  © {new Date().getFullYear()} ScannePourSauver. All rights
+                  reserved.
+                </p>
               </div>
             </div>
-          </form>
-        </CardContent>
-        <CardFooter className="flex flex-col">
-          <Button
-            onClick={onSignup}
-            disabled={buttonDisabled || loading}
-            className="w-full bg-green-600 text-white rounded-full py-3 hover:bg-green-700 transition-colors animate-none hover:animate-bounceHover"
-          >
-            {loading ? "Signing up..." : "Signup"}
-          </Button>
-          <Button
-            variant="link"
-            asChild
-            className="text-blue-500 hover:underline mt-5"
-          >
-            <Link href={qrCodeId ? `/login?qrCodeId=${qrCodeId}` : "/login"}>
-              Already have an account? Login here
-            </Link>
-          </Button>
-        </CardFooter>
-      </Card>
-    </div>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }

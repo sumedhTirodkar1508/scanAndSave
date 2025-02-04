@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import { useToast } from "@/hooks/use-toast";
+import { useTranslations } from "next-intl";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Table,
@@ -20,35 +21,22 @@ import { SaviorQRCode } from "@/app/types/saviorQrCode";
 export default function SaviorsPage() {
   const { data: session } = useSession();
   const { toast } = useToast();
+  const t = useTranslations("SaviorInfo");
   const [saviors, setSaviors] = useState<SaviorQRCode[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchSaviors();
-    // axios
-    //   .get(`/api/savior/get-saviors-for-user?userId=${session.user.id}`)
-    //   .then((response) => {
-    //     setSaviors(response.data);
-    //   })
-    //   .catch((error) => {
-    //     console.error("Error fetching saviors:", error);
-    //     toast({
-    //       variant: "destructive",
-    //       title: "Error",
-    //       description:
-    //         error?.response?.data?.error || "Failed to fetch savior data.",
-    //     });
-    //   })
-    //   .finally(() => setLoading(false));
   }, [session?.user?.id]);
 
   const fetchSaviors = async () => {
     setLoading(true);
+    console.log("user id", session?.user?.id);
     if (!session?.user?.id) {
       toast({
         variant: "destructive",
         title: "Error",
-        description: "User ID is missing. Please log in.",
+        description: t("messages.loginRequired"),
       });
       setLoading(false);
       return;
@@ -63,7 +51,7 @@ export default function SaviorsPage() {
       toast({
         variant: "destructive",
         title: "Error",
-        description: "Failed to fetch savior data.",
+        description: t("messages.fetchError"),
       });
     } finally {
       setLoading(false);
@@ -73,22 +61,22 @@ export default function SaviorsPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-screen">
-        Loading...
+        {t("messages.loading")}
       </div>
     );
   }
 
   return (
     <div className="container mx-auto py-8">
-      <h1 className="text-2xl font-bold mb-6">Saviors List</h1>
+      <h1 className="text-2xl font-bold mb-6">{t("title")}</h1>
       {saviors.length > 0 ? (
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead>Savior Name</TableHead>
-              <TableHead>Email</TableHead>
-              <TableHead>Victim Name</TableHead>
-              <TableHead>Date Scanned</TableHead>
+              <TableHead>{t("table.saviorName")}</TableHead>
+              <TableHead>{t("table.email")}</TableHead>
+              <TableHead>{t("table.victimName")}</TableHead>
+              <TableHead>{t("table.dateScanned")}</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -125,12 +113,10 @@ export default function SaviorsPage() {
       ) : (
         <Card>
           <CardHeader>
-            <CardTitle>No Saviors Found</CardTitle>
+            <CardTitle>{t("messages.noSaviors")}</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-muted">
-              No savior data is available for this user.
-            </p>
+            <p className="text-muted">{t("messages.noSaviorsDesc")}</p>
           </CardContent>
         </Card>
       )}

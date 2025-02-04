@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import { useToast } from "@/hooks/use-toast";
+import { useTranslations } from "next-intl";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Table,
@@ -27,6 +28,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 export default function MyScannedQRsPage() {
   const { data: session } = useSession();
   const { toast } = useToast();
+  const t = useTranslations("MyScannedQRs");
   const [scannedQRs, setScannedQRs] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedQR, setSelectedQR] = useState<any | null>(null);
@@ -54,21 +56,21 @@ export default function MyScannedQRsPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-screen">
-        Loading...
+        {t("messages.loading")}
       </div>
     );
   }
 
   return (
     <div className="container mx-auto py-8">
-      <h1 className="text-2xl font-bold mb-6">My Scanned QR Codes</h1>
+      <h1 className="text-2xl font-bold mb-6">{t("title")}</h1>
       {scannedQRs.length > 0 ? (
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead>Victim Name</TableHead>
-              <TableHead>Victim Email</TableHead>
-              <TableHead>Scanned At</TableHead>
+              <TableHead>{t("table.victimName")}</TableHead>
+              <TableHead>{t("table.victimEmail")}</TableHead>
+              <TableHead>{t("table.scannedAt")}</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -99,157 +101,210 @@ export default function MyScannedQRsPage() {
                 </DialogTrigger>
                 <DialogContent className="sm:max-w-[500px]">
                   <DialogHeader>
-                    <DialogTitle>QR Code Details</DialogTitle>
+                    <DialogTitle>{t("dialog.title")}</DialogTitle>
                   </DialogHeader>
                   {selectedQR && (
                     <ScrollArea className="h-[600px] w-full rounded-md border p-2">
                       <div className="grid gap-4">
                         <div>
-                          <strong>Victim Name:</strong>{" "}
+                          <strong>{t("dialog.details.victimName")}</strong>{" "}
                           {selectedQR.qrCode.victimName || "N/A"}
                         </div>
                         <div>
-                          <strong>Victim Surname:</strong>{" "}
+                          <strong>{t("dialog.details.victimSurname")}</strong>{" "}
                           {selectedQR.qrCode.victimSurname || "N/A"}
                         </div>
                         <div>
-                          <strong>Victim Email:</strong>{" "}
+                          <strong>{t("dialog.details.victimEmail")}</strong>{" "}
                           {selectedQR.qrCode.victimEmail || "N/A"}
                         </div>
                         <div>
-                          <strong>Victim Height:</strong>{" "}
+                          <strong>{t("dialog.details.victimHeight")}</strong>{" "}
                           {selectedQR.qrCode.victimHeight || "N/A"}
                         </div>
                         <div>
-                          <strong>Victim Weight:</strong>{" "}
+                          <strong>{t("dialog.details.victimWeight")}</strong>{" "}
                           {selectedQR.qrCode.victimWeight || "N/A"}
                         </div>
                         <div>
-                          <strong>Victim Age:</strong>{" "}
+                          <strong>{t("dialog.details.victimAge")}</strong>{" "}
                           {selectedQR.qrCode.victimAge || "N/A"}
                         </div>
                         <div>
-                          <strong>Victim Profession:</strong>{" "}
+                          <strong>
+                            {t("dialog.details.victimProfession")}
+                          </strong>{" "}
                           {selectedQR.qrCode.victimProfession || "N/A"}
                         </div>
                         <div>
-                          <strong>Victim Nationality:</strong>{" "}
+                          <strong>
+                            {t("dialog.details.victimNationality")}
+                          </strong>{" "}
                           {selectedQR.qrCode.victimNationality || "N/A"}
                         </div>
                         <div>
-                          <strong>Victim Tel Number:</strong>{" "}
+                          <strong>{t("dialog.details.victimTelNumber")}</strong>{" "}
                           {selectedQR.qrCode.victimTelNumber || "N/A"}
                         </div>
                         <div>
-                          <strong>Victim House Number:</strong>{" "}
+                          <strong>
+                            {t("dialog.details.victimHouseNumber")}
+                          </strong>{" "}
                           {selectedQR.qrCode.victimHouseNumber || "N/A"}
                         </div>
                         <div>
-                          <strong>Victim Address:</strong>{" "}
+                          <strong>{t("dialog.details.victimAddress")}</strong>{" "}
                           {selectedQR.qrCode.victimAddress || "N/A"}
                         </div>
                         <div>
-                          <strong>Victim City:</strong>{" "}
+                          <strong>{t("dialog.details.victimCity")}</strong>{" "}
                           {selectedQR.qrCode.victimCity || "N/A"}
                         </div>
                         <div>
-                          <strong>Victim Country:</strong>{" "}
+                          <strong>{t("dialog.details.victimCountry")}</strong>{" "}
                           {selectedQR.qrCode.victimCountry || "N/A"}
                         </div>
                         <div>
-                          <strong>Relative 1 Name:</strong>{" "}
+                          <strong>
+                            {t("dialog.relativeDetails.title", { number: 1 })}{" "}
+                            {t("dialog.relativeDetails.name")}
+                          </strong>{" "}
                           {selectedQR.qrCode.relative1Name || "N/A"}
                         </div>
                         <div>
-                          <strong>Relative 1 Surname:</strong>{" "}
+                          <strong>
+                            {t("dialog.relativeDetails.title", { number: 1 })}{" "}
+                            {t("dialog.relativeDetails.surname")}
+                          </strong>{" "}
                           {selectedQR.qrCode.relative1Surname || "N/A"}
                         </div>
                         <div>
-                          <strong>Relative 1 Address:</strong>{" "}
+                          <strong>
+                            {t("dialog.relativeDetails.title", { number: 1 })}{" "}
+                            {t("dialog.relativeDetails.address")}
+                          </strong>{" "}
                           {selectedQR.qrCode.relative1Address || "N/A"}
                         </div>
                         <div>
-                          <strong>Relative 1 Phone:</strong>{" "}
+                          <strong>
+                            {t("dialog.relativeDetails.title", { number: 1 })}{" "}
+                            {t("dialog.relativeDetails.phone")}
+                          </strong>{" "}
                           {selectedQR.qrCode.relative1Phone || "N/A"}
                         </div>
                         <div>
-                          <strong>Relative 1 Email:</strong>{" "}
+                          <strong>
+                            {t("dialog.relativeDetails.title", { number: 1 })}{" "}
+                            {t("dialog.relativeDetails.email")}
+                          </strong>{" "}
                           {selectedQR.qrCode.relative1Email || "N/A"}
                         </div>
                         <div>
-                          <strong>Relative 2 Name:</strong>{" "}
+                          <strong>
+                            {t("dialog.relativeDetails.title", { number: 2 })}{" "}
+                            {t("dialog.relativeDetails.name")}
+                          </strong>{" "}
                           {selectedQR.qrCode.relative2Name || "N/A"}
                         </div>
                         <div>
-                          <strong>Relative 2 Surname:</strong>{" "}
+                          <strong>
+                            {t("dialog.relativeDetails.title", { number: 2 })}{" "}
+                            {t("dialog.relativeDetails.surname")}
+                          </strong>{" "}
                           {selectedQR.qrCode.relative2Surname || "N/A"}
                         </div>
                         <div>
-                          <strong>Relative 2 Address:</strong>{" "}
+                          <strong>
+                            {t("dialog.relativeDetails.title", { number: 2 })}{" "}
+                            {t("dialog.relativeDetails.address")}
+                          </strong>{" "}
                           {selectedQR.qrCode.relative2Address || "N/A"}
                         </div>
                         <div>
-                          <strong>Relative 2 Phone:</strong>{" "}
+                          <strong>
+                            {t("dialog.relativeDetails.title", { number: 2 })}{" "}
+                            {t("dialog.relativeDetails.phone")}
+                          </strong>{" "}
                           {selectedQR.qrCode.relative2Phone || "N/A"}
                         </div>
                         <div>
-                          <strong>Relative 2 Email:</strong>{" "}
+                          <strong>
+                            {t("dialog.relativeDetails.title", { number: 2 })}{" "}
+                            {t("dialog.relativeDetails.email")}
+                          </strong>{" "}
                           {selectedQR.qrCode.relative2Email || "N/A"}
                         </div>
                         <div>
-                          <strong>Relative 3 Name:</strong>{" "}
+                          <strong>
+                            {t("dialog.relativeDetails.title", { number: 3 })}{" "}
+                            {t("dialog.relativeDetails.name")}
+                          </strong>{" "}
                           {selectedQR.qrCode.relative3Name || "N/A"}
                         </div>
                         <div>
-                          <strong>Relative 3 Surname:</strong>{" "}
+                          <strong>
+                            {t("dialog.relativeDetails.title", { number: 3 })}{" "}
+                            {t("dialog.relativeDetails.surname")}
+                          </strong>{" "}
                           {selectedQR.qrCode.relative3Surname || "N/A"}
                         </div>
                         <div>
-                          <strong>Relative 3 Address:</strong>{" "}
+                          <strong>
+                            {t("dialog.relativeDetails.title", { number: 2 })}{" "}
+                            {t("dialog.relativeDetails.address")}
+                          </strong>{" "}
                           {selectedQR.qrCode.relative3Address || "N/A"}
                         </div>
                         <div>
-                          <strong>Relative 3 Phone:</strong>{" "}
+                          <strong>
+                            {t("dialog.relativeDetails.title", { number: 3 })}{" "}
+                            {t("dialog.relativeDetails.phone")}
+                          </strong>{" "}
                           {selectedQR.qrCode.relative3Phone || "N/A"}
                         </div>
                         <div>
-                          <strong>Relative 3 Email:</strong>{" "}
+                          <strong>
+                            {t("dialog.relativeDetails.title", { number: 3 })}{" "}
+                            {t("dialog.relativeDetails.email")}
+                          </strong>{" "}
                           {selectedQR.qrCode.relative3Email || "N/A"}
                         </div>
                         <div>
-                          <strong>Blood Group:</strong>{" "}
+                          <strong>{t("dialog.details.bloodGroup")}</strong>{" "}
                           {selectedQR.qrCode.bloodGroup || "N/A"}
                         </div>
                         <div>
-                          <strong>On Drugs:</strong>{" "}
+                          <strong>{t("dialog.details.onDrugs")}</strong>{" "}
                           {selectedQR.qrCode.onDrugs ? "Yes" : "No"}
                         </div>
                         <div>
-                          <strong>Drugs Name:</strong>{" "}
+                          <strong>{t("dialog.details.drugsName")}</strong>{" "}
                           {selectedQR.qrCode.drugsName || "N/A"}
                         </div>
                         <div>
-                          <strong>Doctor Phone Number:</strong>{" "}
+                          <strong>
+                            {t("dialog.details.doctorPhoneNumber")}
+                          </strong>{" "}
                           {selectedQR.qrCode.doctorPhoneNumber || "N/A"}
                         </div>
                         <div>
-                          <strong>Sickness:</strong>{" "}
+                          <strong>{t("dialog.details.sickness")}</strong>{" "}
                           {selectedQR.qrCode.sickness || "N/A"}
                         </div>
                         <div>
-                          <strong>Medication:</strong>{" "}
+                          <strong>{t("dialog.details.medication")}</strong>{" "}
                           {selectedQR.qrCode.medication || "N/A"}
                         </div>
                         <div>
-                          <strong>Hospital Name:</strong>{" "}
+                          <strong>{t("dialog.details.hospitalName")}</strong>{" "}
                           {selectedQR.qrCode.hospitalName || "N/A"}
                         </div>
                         <div>
-                          <strong>Status:</strong>{" "}
+                          <strong>{t("dialog.details.status")}</strong>{" "}
                           {selectedQR.qrCode.status || "N/A"}
                         </div>
                         <div>
-                          <strong>Created At:</strong>{" "}
+                          <strong>{t("dialog.details.createdAt")}</strong>{" "}
                           {new Date(selectedQR.qrCode.createdAt).toLocaleString(
                             "fr-TG"
                           )}
@@ -271,10 +326,10 @@ export default function MyScannedQRsPage() {
       ) : (
         <Card>
           <CardHeader>
-            <CardTitle>No Scanned QR Codes Found</CardTitle>
+            <CardTitle>{t("notFoundTitle")}</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-muted">You have not scanned any QR codes yet.</p>
+            <p className="text-muted">{t("messages.noScannedQRs")}</p>
           </CardContent>
         </Card>
       )}

@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useSearchParams } from "next/navigation";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useToast } from "@/hooks/use-toast";
 import { useSession } from "next-auth/react";
@@ -22,6 +23,7 @@ import { Button } from "@/components/ui/button";
 export default function VictimInformationPage() {
   const searchParams = useSearchParams();
   const { toast } = useToast();
+  const t = useTranslations("VictimInfo");
   const { data: session } = useSession();
 
   const [victimData, setVictimData] = useState<any>(null);
@@ -90,15 +92,11 @@ export default function VictimInformationPage() {
   }, [searchParams]);
 
   if (loading) {
-    return (
-      <div className="text-center py-8">Loading victim information...</div>
-    );
+    return <div className="text-center py-8">{t("loading")}</div>;
   }
 
   if (!victimData) {
-    return (
-      <div className="text-center py-8">No data found for this QR Code.</div>
-    );
+    return <div className="text-center py-8">{t("noData")}</div>;
   }
 
   const {
@@ -146,10 +144,10 @@ export default function VictimInformationPage() {
       <Card className="w-full max-w-3xl">
         <CardHeader>
           <CardTitle className="text-2xl font-bold text-center">
-            Victim Information
+            {t("title")}
           </CardTitle>
           <CardDescription className="text-center">
-            Details retrieved from the QR Code
+            {t("subtitle")}
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
@@ -158,7 +156,7 @@ export default function VictimInformationPage() {
             <div className="flex justify-center">
               <Image
                 src={displayPicUrl}
-                alt="Victim Profile Picture"
+                alt={t("fields.name")}
                 width={150}
                 height={150}
                 className="rounded-full border border-gray-300"
@@ -169,67 +167,71 @@ export default function VictimInformationPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {/* Personal Details */}
             <div>
-              <strong>Victim Name:</strong> {victimName} {victimSurname}
+              <strong>{t("fields.name")}:</strong> {victimName} {victimSurname}
             </div>
             <div>
-              <strong>Email:</strong> {victimEmail}
+              <strong>{t("fields.email")}:</strong> {victimEmail}
             </div>
             <div>
-              <strong>Phone:</strong> {victimTelNumber}
+              <strong>{t("fields.phone")}:</strong> {victimTelNumber}
             </div>
             <div>
-              <strong>Profession:</strong> {victimProfession || "N/A"}
+              <strong>{t("fields.profession")}:</strong>{" "}
+              {victimProfession || "N/A"}
             </div>
             <div>
-              <strong>Nationality:</strong> {victimNationality || "N/A"}
+              <strong>{t("fields.nationality")}:</strong>{" "}
+              {victimNationality || "N/A"}
             </div>
             <div>
-              <strong>Height:</strong> {victimHeight || "N/A"} cm
+              <strong>{t("fields.height")}:</strong> {victimHeight || "N/A"} cm
             </div>
             <div>
-              <strong>Weight:</strong> {victimWeight || "N/A"} kg
+              <strong>{t("fields.weight")}:</strong> {victimWeight || "N/A"} kg
             </div>
             <div>
-              <strong>Age:</strong> {victimAge || "N/A"}
+              <strong>{t("fields.age")}:</strong> {victimAge || "N/A"}
             </div>
 
             {/* Address Details */}
             <div>
-              <strong>House Number:</strong> {victimHouseNumber || "N/A"}
+              <strong>{t("fields.houseNumber")}:</strong>{" "}
+              {victimHouseNumber || "N/A"}
             </div>
             <div>
-              <strong>Address:</strong> {victimAddress || "N/A"}
+              <strong>{t("fields.address")}:</strong> {victimAddress || "N/A"}
             </div>
             <div>
-              <strong>City:</strong> {victimCity || "N/A"}
+              <strong>{t("fields.city")}:</strong> {victimCity || "N/A"}
             </div>
             <div>
-              <strong>Country:</strong> {victimCountry || "N/A"}
+              <strong>{t("fields.country")}:</strong> {victimCountry || "N/A"}
             </div>
 
             {/* Medical Information */}
             <div>
-              <strong>Blood Group:</strong> {bloodGroup}
+              <strong>{t("fields.bloodGroup")}:</strong> {bloodGroup}
             </div>
             <div>
-              <strong>On Medication:</strong> {medication || "N/A"}
+              <strong>{t("fields.onMedication")}:</strong> {medication || "N/A"}
             </div>
             <div>
-              <strong>Sickness:</strong> {sickness || "N/A"}
+              <strong>{t("fields.sickness")}:</strong> {sickness || "N/A"}
             </div>
             <div>
-              <strong>On Drugs:</strong> {onDrugs ? "Yes" : "No"}
+              <strong>{t("fields.onDrugs")}:</strong> {onDrugs ? "Yes" : "No"}
             </div>
             {onDrugs && (
               <div>
-                <strong>Drugs:</strong> {drugsName || "N/A"}
+                <strong>{t("fields.drugsName")}:</strong> {drugsName || "N/A"}
               </div>
             )}
             <div>
-              <strong>Doctor&apos;s Phone:</strong> {doctorPhoneNumber || "N/A"}
+              <strong>{t("fields.doctorPhone")}:</strong>{" "}
+              {doctorPhoneNumber || "N/A"}
             </div>
             <div>
-              <strong>Hospital:</strong> {hospitalName || "N/A"}
+              <strong>{t("fields.hospital")}:</strong> {hospitalName || "N/A"}
             </div>
 
             {/* Relatives' Information */}
@@ -240,19 +242,21 @@ export default function VictimInformationPage() {
               return (
                 <div key={i} className="col-span-2 border-t pt-2">
                   <div>
-                    <strong>Relative {i}:</strong> {name}{" "}
-                    {victimData[`relative${i}Surname`] || ""}
+                    <strong>
+                      {t("fields.relative")} {i}:
+                    </strong>{" "}
+                    {name} {victimData[`relative${i}Surname`] || ""}
                   </div>
                   <div>
-                    <strong>Phone:</strong>{" "}
+                    <strong>{t("fields.phone")}:</strong>{" "}
                     {victimData[`relative${i}Phone`] || "N/A"}
                   </div>
                   <div>
-                    <strong>Email:</strong>{" "}
+                    <strong>{t("fields.email")}:</strong>{" "}
                     {victimData[`relative${i}Email`] || "N/A"}
                   </div>
                   <div>
-                    <strong>Address:</strong>{" "}
+                    <strong>{t("fields.address")}:</strong>{" "}
                     {victimData[`relative${i}Address`] || "N/A"}
                   </div>
                 </div>
@@ -261,7 +265,7 @@ export default function VictimInformationPage() {
 
             {/* Status */}
             <div className="col-span-2 border-t pt-2">
-              <strong>Status:</strong>{" "}
+              <strong>{t("fields.status")}:</strong>{" "}
               <span className="capitalize font-medium">
                 {status.toLowerCase()}
               </span>

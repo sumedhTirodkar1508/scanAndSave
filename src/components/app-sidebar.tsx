@@ -41,62 +41,56 @@ import {
 } from "@/components/ui/breadcrumb";
 import { Separator } from "@/components/ui/separator";
 import { NavUser } from "@/components/nav-user";
-
-// Menu items.
-const items = [
-  {
-    title: "Dashboard",
-    url: "/dashboard",
-    icon: LayoutDashboard,
-  },
-  {
-    title: "Generate QR",
-    url: "/generateQR",
-    icon: QrCode,
-  },
-  {
-    title: "Savior Info",
-    url: "/savior-information",
-    icon: BriefcaseMedical,
-  },
-  {
-    title: "My Scanned QRs",
-    url: "/my-scanned-qrs",
-    icon: Search,
-  },
-  {
-    title: "Scan QR",
-    url: "/qr-scanner",
-    icon: Scan,
-  },
-];
-
-// Admin-specific items.
-const adminItems = [
-  {
-    title: "Approve/Reject QR",
-    url: "/admin/qr-approvals",
-    icon: Check,
-  },
-  {
-    title: "Savior Links",
-    url: "/admin/savior-links",
-    icon: Link,
-  },
-];
-
-// const data = {
-//   user: {
-//     name: "Scanne Pour Sauver",
-//     email: "dummyemail@gmail.com",
-//     avatar: "../../scanneSauverLogo.jpg",
-//   },
-// };
+import { useTranslations } from "next-intl";
 
 export function AppSidebar() {
   const router = useRouter();
   const { toast } = useToast();
   const { data: session } = useSession(); // Use session data to determine the user's role.
+  const t = useTranslations("Sidebar");
+
+  // Menu items.
+  const items = [
+    {
+      title: t("menu.dashboard"),
+      url: "/dashboard",
+      icon: LayoutDashboard,
+    },
+    {
+      title: t("menu.generateQR"),
+      url: "/generateQR",
+      icon: QrCode,
+    },
+    {
+      title: t("menu.saviorInfo"),
+      url: "/savior-information",
+      icon: BriefcaseMedical,
+    },
+    {
+      title: t("menu.myScannedQRs"),
+      url: "/my-scanned-qrs",
+      icon: Search,
+    },
+    {
+      title: t("menu.scanQR"),
+      url: "/qr-scanner",
+      icon: Scan,
+    },
+  ];
+
+  // Admin-specific items.
+  const adminItems = [
+    {
+      title: t("menu.approveReject"),
+      url: "/admin/qr-approvals",
+      icon: Check,
+    },
+    {
+      title: t("menu.saviorLinks"),
+      url: "/admin/savior-links",
+      icon: Link,
+    },
+  ];
 
   const data = {
     user: {
@@ -107,7 +101,7 @@ export function AppSidebar() {
   };
 
   const userItems = session?.user?.isTemporary
-    ? [{ title: "My Scanned QRs", url: "/my-scanned-qrs", icon: Search }]
+    ? [{ title: t("menu.myScannedQRs"), url: "/my-scanned-qrs", icon: Search }]
     : items;
 
   const logout = async () => {
@@ -115,7 +109,7 @@ export function AppSidebar() {
       await signOut({ callbackUrl: "/login" }); // NextAuth's signOut method
       toast({
         title: "Success",
-        description: "Logout successful!",
+        description: t("menu.logout"),
       });
     } catch (error) {
       console.error("Error during logout:", error);
@@ -135,7 +129,7 @@ export function AppSidebar() {
         </SidebarHeader>
         <SidebarContent>
           <SidebarGroup>
-            <SidebarGroupLabel>Navigation</SidebarGroupLabel>
+            <SidebarGroupLabel>{t("navigation")}</SidebarGroupLabel>
             <SidebarGroupContent>
               <SidebarMenu>
                 {userItems.map((item) => (
@@ -156,7 +150,7 @@ export function AppSidebar() {
           {/* Admin Section */}
           {session?.user?.role === "ADMIN" && (
             <SidebarGroup>
-              <SidebarGroupLabel>Admin</SidebarGroupLabel>
+              <SidebarGroupLabel>{t("admin")}</SidebarGroupLabel>
               <SidebarGroupContent>
                 <SidebarMenu>
                   {adminItems.map((item) => (
@@ -179,7 +173,7 @@ export function AppSidebar() {
             <SidebarMenuItem key="logout">
               <SidebarMenuButton onClick={logout}>
                 <LogOut />
-                <span>Logout</span>
+                <span>{t("menu.logout")}</span>
               </SidebarMenuButton>
             </SidebarMenuItem>
           </SidebarMenu>

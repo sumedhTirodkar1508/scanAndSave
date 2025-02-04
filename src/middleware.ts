@@ -1,8 +1,23 @@
 import { NextRequest, NextResponse } from "next/server";
 export { default } from "next-auth/middleware";
 import { getToken } from "next-auth/jwt";
+import createMiddleware from "next-intl/middleware";
+
+const intlMiddleware = createMiddleware({
+  locales: ["en", "fr"],
+  defaultLocale: "fr",
+  localeDetection: false, // Disable automatic detection
+});
 
 export async function middleware(request: NextRequest) {
+  // Handle language cookie first
+  const localeCookie = request.cookies.get("NEXT_LOCALE");
+  const response = intlMiddleware(request);
+
+  if (localeCookie?.value) {
+    response.headers.set("x-next-locale", localeCookie.value);
+  }
+
   const token = await getToken({ req: request }).catch(() => null);
   const url = request.nextUrl;
 
