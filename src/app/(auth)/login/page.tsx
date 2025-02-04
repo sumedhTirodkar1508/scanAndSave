@@ -137,7 +137,7 @@ export default function LoginPage() {
             <div className="flex flex-col min-h-screen md:px-12 py-12 px-3">
               {/* <!-- Start Logo --> */}
               <div className="text-center mx-auto">
-                <a href="/">
+                <Link href="/">
                   <div className="flex justify-center mb-4">
                     <Avatar style={{ height: "5rem", width: "5rem" }}>
                       <AvatarImage
@@ -147,7 +147,7 @@ export default function LoginPage() {
                       <AvatarFallback>X</AvatarFallback>
                     </Avatar>
                   </div>
-                </a>
+                </Link>
               </div>
               {/* <!-- End Logo --> */}
 
