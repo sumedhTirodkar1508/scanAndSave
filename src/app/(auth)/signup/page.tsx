@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import axios from "axios";
 import { useSession, signIn } from "next-auth/react";
 import { useToast } from "@/hooks/use-toast";
+import { useCallback } from "react";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import {
@@ -36,20 +37,7 @@ export default function SignupPage() {
   const [buttonDisabled, setButtonDisabled] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
 
-  useEffect(() => {
-    // console.log("SignupPage useEffect has been called");
-    // console.log("status:", status);
-    // console.log("user id in session", session?.user?.id);
-    // Check if user is already logged in
-    if (status === "authenticated") {
-      // Redirect to victim information page if `qrCodeId` is present
-      if (qrCodeId && session?.user?.id) {
-        linkQrToAlreadyLoggedInUser();
-      }
-    }
-  }, [status, qrCodeId]);
-
-  const linkQrToAlreadyLoggedInUser = async () => {
+  const linkQrToAlreadyLoggedInUser = useCallback(async () => {
     console.log("inside linkQrToAlreadyLoggedInUser");
     try {
       setLoading(true);
@@ -82,7 +70,18 @@ export default function SignupPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [qrCodeId, session?.user?.id, router, toast]);
+
+  useEffect(() => {
+    // console.log("SignupPage useEffect has been called");
+    // console.log("status:", status);
+    // console.log("user id in session", session?.user?.id);
+    // Check if user is already logged in
+    if (status === "authenticated" && qrCodeId && session?.user?.id) {
+      // Redirect to victim information page if `qrCodeId` is present
+      linkQrToAlreadyLoggedInUser();
+    }
+  }, [status, qrCodeId, session?.user?.id, linkQrToAlreadyLoggedInUser]);
 
   const onSignup = async () => {
     try {

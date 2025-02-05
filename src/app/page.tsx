@@ -1,28 +1,51 @@
-import Link from "next/link";
+"use client";
+import dynamic from "next/dynamic";
+import { useState, useEffect } from "react";
+
+import Header2 from "@/components/Header2/Header2";
+import PartnerSection from "@/components/PartnerSection";
+import Footer2 from "@/components/footer2/Footer2";
+
+// Dynamically import components that use browser APIs
+const Scrollbar = dynamic(() => import("@/components/scrollbar/scrollbar"), {
+  ssr: false,
+});
+
+const Hero4 = dynamic(() => import("@/components/hero4/hero4"));
+const About4 = dynamic(() => import("@/components/about4/about4"));
+const Testimonial = dynamic(
+  () => import("@/components/Testimonial/Testimonial")
+);
+const StoriesSection3 = dynamic(
+  () => import("@/components/StoriesSection3/StoriesSection3")
+);
+const BlogSection4 = dynamic(
+  () => import("@/components/BlogSection4/BlogSection4")
+);
 
 export default function Home() {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  if (!isClient) {
+    return null;
+  }
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="bg-white p-8 rounded-lg shadow-md text-center">
-        <h1 className="text-3xl font-bold mb-4">
-          Welcome to QR Code Accident App
-        </h1>
-        <p className="mb-6">Generate and scan QR codes for accident victims</p>
-        <div className="space-x-4">
-          <Link
-            href="/login"
-            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-          >
-            Login
-          </Link>
-          <Link
-            href="/signup"
-            className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
-          >
-            Sign Up
-          </Link>
-        </div>
-      </div>
+    <div>
+      <Header2 />
+      <main className="main main--wrapper4">
+        <Hero4 />
+        <About4 />
+        <Testimonial />
+        <StoriesSection3 />
+        <BlogSection4 />
+        <PartnerSection pClass={"sponsors--style2"} />
+      </main>
+      <Footer2 />
+      <Scrollbar />
     </div>
   );
 }
