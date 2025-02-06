@@ -328,6 +328,15 @@ export default function DashboardPage() {
           </DialogFooter>
         </DialogContent>
       </Dialog>
+
+      <div>
+        <Card className="mt-5 p-4">
+          <CardTitle className="text-5xl">
+            Please email me your personal email address or Whatsapp number. My
+            email is sumedhtirodkar16@gmail.com
+          </CardTitle>
+        </Card>
+      </div>
     </div>
   );
 }
