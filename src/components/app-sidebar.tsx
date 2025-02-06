@@ -126,18 +126,26 @@ export function AppSidebar() {
 
   return (
     <>
-      <Sidebar>
-        <SidebarHeader onClick={() => router.push("/dashboard")}>
+      <Sidebar className="bg-[var(--sidebar-background)] text-white">
+        <SidebarHeader
+          onClick={() => router.push("/dashboard")}
+          className="hover:bg-[var(--sidebar-accent)] transition-colors"
+        >
           <NavUser user={data.user} />
         </SidebarHeader>
         <SidebarContent>
           <SidebarGroup>
-            <SidebarGroupLabel>{t("navigation")}</SidebarGroupLabel>
+            <SidebarGroupLabel className="text-white">
+              {t("navigation")}
+            </SidebarGroupLabel>
             <SidebarGroupContent>
               <SidebarMenu>
                 {userItems.map((item) => (
                   <SidebarMenuItem key={item.title}>
-                    <SidebarMenuButton asChild>
+                    <SidebarMenuButton
+                      asChild
+                      className="hover:bg-[var(--sidebar-accent)] hover:text-[var(--sidebar-primary)] transition-colors"
+                    >
                       <a href={item.url}>
                         <item.icon />
 
@@ -153,12 +161,17 @@ export function AppSidebar() {
           {/* Admin Section */}
           {session?.user?.role === "ADMIN" && (
             <SidebarGroup>
-              <SidebarGroupLabel>{t("admin")}</SidebarGroupLabel>
+              <SidebarGroupLabel className="text-white">
+                {t("admin")}
+              </SidebarGroupLabel>
               <SidebarGroupContent>
                 <SidebarMenu>
                   {adminItems.map((item) => (
                     <SidebarMenuItem key={item.title}>
-                      <SidebarMenuButton asChild>
+                      <SidebarMenuButton
+                        asChild
+                        className="hover:bg-[var(--sidebar-accent)] hover:text-[var(--sidebar-primary)] transition-colors"
+                      >
                         <a href={item.url}>
                           <item.icon />
                           <span>{item.title}</span>
@@ -174,7 +187,10 @@ export function AppSidebar() {
         <SidebarFooter>
           <SidebarMenu>
             <SidebarMenuItem key="logout">
-              <SidebarMenuButton onClick={logout}>
+              <SidebarMenuButton
+                onClick={logout}
+                className="hover:bg-[var(--sidebar-accent)] hover:text-[var(--sidebar-primary)] transition-colors"
+              >
                 <LogOut />
                 <span>{t("menu.logout")}</span>
               </SidebarMenuButton>
@@ -182,27 +198,6 @@ export function AppSidebar() {
           </SidebarMenu>
         </SidebarFooter>
       </Sidebar>
-      {/* <SidebarInset>
-        <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
-          <div className="flex items-center gap-2 px-4">
-            <SidebarTrigger className="-ml-1" />
-            <Separator orientation="vertical" className="mr-2 h-4" />
-            <Breadcrumb>
-              <BreadcrumbList>
-                <BreadcrumbItem className="hidden md:block">
-                  <BreadcrumbLink href="#">
-                    Building Your Application
-                  </BreadcrumbLink>
-                </BreadcrumbItem>
-                <BreadcrumbSeparator className="hidden md:block" />
-                <BreadcrumbItem>
-                  <BreadcrumbPage>Data Fetching</BreadcrumbPage>
-                </BreadcrumbItem>
-              </BreadcrumbList>
-            </Breadcrumb>
-          </div>
-        </header>
-      </SidebarInset> */}
     </>
   );
 }

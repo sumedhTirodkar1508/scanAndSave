@@ -68,58 +68,66 @@ export default function SaviorsPage() {
 
   return (
     <div className="container mx-auto py-8">
-      <h1 className="text-2xl font-bold mb-6">{t("title")}</h1>
-      {saviors.length > 0 ? (
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead>{t("table.saviorName")}</TableHead>
-              <TableHead>{t("table.email")}</TableHead>
-              <TableHead>{t("table.victimName")}</TableHead>
-              <TableHead>{t("table.dateScanned")}</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {saviors.map((savior) => (
-              <TableRow key={savior.id}>
-                <TableCell className="flex items-center space-x-2">
-                  <Avatar>
-                    <AvatarImage
-                      src={
-                        savior.profileImageUrl
-                          ? savior.profileImageUrl
-                          : "/scanneSauverLogo.jpg" // Provide a fallback image
-                      }
-                      alt={savior.name || "Savior"}
-                    />
-                    <AvatarFallback>
-                      {savior.name?.charAt(0) || "?"}
-                    </AvatarFallback>
-                  </Avatar>
+      <Card className="w-full mx-auto">
+        <CardHeader>
+          <CardTitle className="text-2xl">
+            <h1>{t("title")}</h1>
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          {saviors.length > 0 ? (
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>{t("table.saviorName")}</TableHead>
+                  <TableHead>{t("table.email")}</TableHead>
+                  <TableHead>{t("table.victimName")}</TableHead>
+                  <TableHead>{t("table.dateScanned")}</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {saviors.map((savior) => (
+                  <TableRow key={savior.id}>
+                    <TableCell className="flex items-center space-x-2">
+                      <Avatar>
+                        <AvatarImage
+                          src={
+                            savior.profileImageUrl
+                              ? savior.profileImageUrl
+                              : "/scanneSauverLogo.jpg" // Provide a fallback image
+                          }
+                          alt={savior.name || "Savior"}
+                        />
+                        <AvatarFallback>
+                          {savior.name?.charAt(0) || "?"}
+                        </AvatarFallback>
+                      </Avatar>
 
-                  <span>{savior.name || "N/A"}</span>
-                </TableCell>
-                <TableCell>{savior.email}</TableCell>
-                <TableCell>
-                  {savior.qrCode ? savior.qrCode.victimName : "N/A"}
-                </TableCell>
-                <TableCell>
-                  {new Date(savior.createdAt).toLocaleString("fr-TG")}
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      ) : (
-        <Card>
-          <CardHeader>
-            <CardTitle>{t("messages.noSaviors")}</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-muted">{t("messages.noSaviorsDesc")}</p>
-          </CardContent>
-        </Card>
-      )}
+                      <span>{savior.name || "N/A"}</span>
+                    </TableCell>
+                    <TableCell>{savior.email}</TableCell>
+                    <TableCell>
+                      {savior.qrCode ? savior.qrCode.victimName : "N/A"}
+                    </TableCell>
+                    <TableCell>
+                      {new Date(savior.createdAt).toLocaleString("fr-TG")}
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          ) : (
+            <Card>
+              <CardHeader>
+                <CardTitle>{t("messages.noSaviors")}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted">{t("messages.noSaviorsDesc")}</p>
+              </CardContent>
+            </Card>
+          )}
+        </CardContent>
+      </Card>
     </div>
   );
 }

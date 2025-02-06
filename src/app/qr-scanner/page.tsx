@@ -69,10 +69,10 @@ export default function QRScannerPage() {
   };
 
   return (
-    <div className="container mx-auto py-8">
+    <div className="container mx-auto py-8 bg-[#EFEEE7] h-screen">
       <h1 className="text-3xl font-bold text-center mb-8">{t("title")}</h1>
 
-      <Card className="max-w-md mx-auto">
+      <Card className="max-w-lg mx-auto">
         <CardHeader>
           <CardTitle>{t("scannerTitle")}</CardTitle>
         </CardHeader>

@@ -149,6 +149,7 @@
     "messages": {
       "loading": "Loading...",
       "noScannedQRs": "You have not scanned any QR codes yet.",
+      "loginRequired": "User ID is missing. Please log in.",
       "fetchError": "Failed to fetch QR codes."
     }
   },

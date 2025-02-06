@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 // import logo from "/public/assets/logos/logo_2.svg";
 import logo from "/public/scanneSauverLogo.jpg";
-import logo2 from "/public/assets/logos/logo_1.svg";
+// import logo2 from "/public/assets/logos/logo_1.svg";
 import MobileMenu from "@/components/MobileMenu/MobileMenu";
 import Image from "next/image";
 
@@ -324,7 +324,7 @@ const Header2 = (props) => {
       >
         <div className="mean-bar headerBurgerMenu">
           <Link onClick={ClickHandler} href="/">
-            <Image className="mean-bar__logo" alt="Techkit" src={logo2} />
+            <Image className="mean-bar__logo" alt="Techkit" src={logo} />
           </Link>
           <div className="header__right">
             <div className="header__actions">
@@ -392,7 +392,7 @@ const Header2 = (props) => {
       <div className={`cc cc--slideNav ${mobailActive ? "show" : ""}`}>
         <div className="cc__logo mb-40">
           <Link onClick={ClickHandler} href="/">
-            <Image className="mean-bar__logo" alt="Techkit" src={logo2} />
+            <Image className="mean-bar__logo" alt="Techkit" src={logo} />
           </Link>
         </div>
         <div className="offscreen-navigation mb-40">

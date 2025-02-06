@@ -153,6 +153,7 @@
     "messages": {
       "loading": "Chargement...",
       "noScannedQRs": "Vous n'avez pas encore scanné de codes QR.",
+      "loginRequired": "Utilisateur non connecté.",
       "fetchError": "Impossible de récupérer les codes QR."
     }
   },

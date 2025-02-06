@@ -50,20 +50,20 @@ const About4 = () => {
                     Why have an SPS QR Code?
                   </h2>
                 </div>
-                <p className="aboutContent__text">
-                  <ul>
-                    <li>
-                      <b>Quick access to your medical information:</b>{" "}
-                      allergies, history, current treatments.
-                    </li>
-                    <li>
-                      <b>Emergency contacts:</b> who to notify if necessary.
-                    </li>
-                    <li>
-                      <b>Critical data:</b> blood group, etc.
-                    </li>
-                  </ul>
-                </p>
+
+                <ul className="aboutContent__text">
+                  <li>
+                    <b>Quick access to your medical information:</b> allergies,
+                    history, current treatments.
+                  </li>
+                  <li>
+                    <b>Emergency contacts:</b> who to notify if necessary.
+                  </li>
+                  <li>
+                    <b>Critical data:</b> blood group, etc.
+                  </li>
+                </ul>
+
                 <span className="aboutContent__quote">
                   join our Action and everyone can help
                 </span>

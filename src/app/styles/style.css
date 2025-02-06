@@ -1359,8 +1359,8 @@ path,
 }
 
 .mask {
-  -webkit-mask-image: url(/images/shapes/mask-shape1.svg);
-  mask-image: url(/images/shapes/mask-shape1.svg);
+  -webkit-mask-image: url(/assets/shapes/mask-shape1.svg);
+  mask-image: url(/assets/shapes/mask-shape1.svg);
 }
 
 .mask--about {
@@ -2759,8 +2759,8 @@ html {
 }
 
 .hero__figure {
-  -webkit-mask-image: url(/images/shapes/shapes2.svg);
-  mask-image: url(/images/shapes/shapes2.svg);
+  -webkit-mask-image: url(/assets/shapes/shapes2.svg);
+  mask-image: url(/assets/shapes/shapes2.svg);
   -webkit-mask-size: 100%;
   mask-size: 100%;
   -webkit-mask-repeat: no-repeat;
@@ -3158,8 +3158,8 @@ html {
   top: 0;
   bottom: 0;
   height: 100%;
-  -webkit-mask-image: url(/images/shapes/joinmaskshape.png);
-  mask-image: url(/images/shapes/joinmaskshape.png);
+  -webkit-mask-image: url(/assets/shapes/joinmaskshape.png);
+  mask-image: url(/assets/shapes/joinmaskshape.png);
   mask-repeat: no-repeat;
   -webkit-mask-repeat: no-repeat;
 }
@@ -3190,8 +3190,8 @@ html {
   position: absolute;
   top: 0;
   right: 0;
-  -webkit-mask-image: url(/images/shapes/about-mask-shape-h3.png);
-  mask-image: url(/images/shapes/about-mask-shape-h3.png);
+  -webkit-mask-image: url(/assets/shapes/about-mask-shape-h3.png);
+  mask-image: url(/assets/shapes/about-mask-shape-h3.png);
 }
 
 @media (max-width: 991px) {
@@ -3780,7 +3780,7 @@ img.map-about-tab {
 
 .featureBlock:hover .featureBlock__hashLink,
 .featureBlock--active .featureBlock__hashLink {
-  background-image: url(/images/shapes/featuredCateShape2.png);
+  background-image: url(/assets/shapes/featuredCateShape2.png);
   color: #fff;
 }
 

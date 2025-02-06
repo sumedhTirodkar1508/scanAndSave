@@ -29,7 +29,7 @@ export default function DashboardLayout({
         {/* SidebarInset to contain breadcrumbs and main content */}
         <SidebarInset className="flex flex-col w-full">
           {/* Header with Breadcrumbs */}
-          <header className="flex h-16 shrink-0 items-center justify-between transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
+          <header className="flex h-16 shrink-0 items-center bg-[var(--sidebar-primary)] justify-between transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
             <div className="flex items-center gap-2 px-4">
               <SidebarTrigger className="-ml-1" />
               <Separator orientation="vertical" className="mr-2 h-4" />
@@ -53,7 +53,7 @@ export default function DashboardLayout({
           </header>
 
           {/* Main Content Area */}
-          <div className="flex-1 p-4">
+          <div className="flex-1 p-4 bg-[#EFEEE7]">
             <Suspense fallback={<div>Loading...</div>}>
               <main>{children}</main>
             </Suspense>
