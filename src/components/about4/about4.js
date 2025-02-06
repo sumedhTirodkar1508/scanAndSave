@@ -44,20 +44,25 @@ const About4 = () => {
                 <div className="sectionTitle mb-20">
                   <span className="sectionTitle__small">
                     <i className="fa-solid fa-heart btn__icon"></i>
-                    about foundation
+                    about Scan To Save
                   </span>
                   <h2 className="sectionTitle__big">
-                    what have we done with your help
+                    Why have an SPS QR Code?
                   </h2>
                 </div>
                 <p className="aboutContent__text">
-                  There are many variations of passages of Lorem Ipsum
-                  available, but the majority have suffered alteration in some
-                  form, by injected humour, or randomised words which look even
-                  slightly believable. If you are going to use a passage Lorem
-                  of Lorem Ipsum, you need to be sure there anything
-                  embarrassing hidden in the middle There are many variations of
-                  passages
+                  <ul>
+                    <li>
+                      <b>Quick access to your medical information:</b>{" "}
+                      allergies, history, current treatments.
+                    </li>
+                    <li>
+                      <b>Emergency contacts:</b> who to notify if necessary.
+                    </li>
+                    <li>
+                      <b>Critical data:</b> blood group, etc.
+                    </li>
+                  </ul>
                 </p>
                 <span className="aboutContent__quote">
                   join our Action and everyone can help

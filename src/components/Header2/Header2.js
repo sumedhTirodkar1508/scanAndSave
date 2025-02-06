@@ -271,10 +271,10 @@ const Header2 = (props) => {
                     <Link
                       onClick={ClickHandler}
                       className="btn btn--styleOne btn--secondary it-btn"
-                      href="/donation-listing"
+                      href="/login"
                     >
-                      <span className="btn__text">donate now</span>
-                      <i className="fa-solid fa-heart btn__icon"></i>
+                      <i className="fa-solid fa-user"></i>
+                      <span className="btn__text">login</span>
                       <span className="it-btn__inner">
                         <span className="it-btn__blobs">
                           <span className="it-btn__blob"></span>

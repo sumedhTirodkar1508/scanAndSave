@@ -36,7 +36,7 @@ const Hero4 = (props) => {
                     data-wow-duration="1200ms"
                     data-wow-delay="300ms"
                   >
-                    Do good For Others
+                    Your QR Code for immediate security
                   </h1>
                 </div>
               </Slide>
@@ -47,8 +47,10 @@ const Hero4 = (props) => {
                     data-wow-duration="1200ms"
                     data-wow-delay="400ms"
                   >
-                    We help nonprofits from Australia to Ukraine (and hundreds
-                    of places in between) access the tools, training,
+                    <b>In an emergency, every second is precious.</b> The{" "}
+                    <b>Scan To Save (SPS)</b> QR Code allows you to instantly
+                    share your vital information with rescuers, doctors and your
+                    loved ones.
                   </p>
                 </div>
               </Slide>
@@ -61,8 +63,8 @@ const Hero4 = (props) => {
                     data-wow-delay="500ms"
                     href="/donation-listing"
                   >
-                    <span className="btn__text">join the journey</span>
-                    <i className="fa-solid fa-heart btn__icon"></i>
+                    <span className="btn__text">Get you SPS Qr Code </span>
+                    <i className="fa-solid fa-qrcode btn__icon"></i>
                     <span className="it-btn__inner">
                       <span className="it-btn__blobs">
                         <span className="it-btn__blob"></span>

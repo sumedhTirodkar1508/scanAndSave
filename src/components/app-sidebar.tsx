@@ -101,7 +101,10 @@ export function AppSidebar() {
   };
 
   const userItems = session?.user?.isTemporary
-    ? [{ title: t("menu.myScannedQRs"), url: "/my-scanned-qrs", icon: Search }]
+    ? [
+        { title: t("menu.myScannedQRs"), url: "/my-scanned-qrs", icon: Search },
+        { title: t("menu.scanQR"), url: "/qr-scanner", icon: Scan },
+      ]
     : items;
 
   const logout = async () => {

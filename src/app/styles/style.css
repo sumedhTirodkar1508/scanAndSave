@@ -1390,8 +1390,8 @@ path,
 }
 
 .mask--review {
-  -webkit-mask-image: url(/images/shapes/testi-shape3.svg);
-  mask-image: url(/images/shapes/testi-shape3.svg);
+  -webkit-mask-image: url(/assets/shapes/testi-shape3.svg);
+  mask-image: url(/assets/shapes/testi-shape3.svg);
   bottom: 9%;
   right: 0;
   z-index: -1;
@@ -3633,7 +3633,7 @@ img.map-about-tab {
   text-transform: uppercase;
   color: #fff;
   font-weight: 600;
-  background-image: url(/images/shapes/featuredCateShape1.png);
+  background-image: url(/assets/shapes/featuredCateShape1.png);
   min-width: 152px;
   min-height: 64px;
   background-repeat: no-repeat;

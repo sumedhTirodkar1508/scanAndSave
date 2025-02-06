@@ -1,12 +1,6 @@
 import { Inter } from "next/font/google";
 import { Toaster } from "@/components/ui/toaster";
 import "./globals.css";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "@/app/styles/custom-animation.css";
-import "@/app/styles/animate.css";
-import "@/app/styles/icomoon.css";
-import "@/app/styles/fontawesome.css";
-import "@/app/styles/style.css";
 import AuthProvider from "@/context/AuthProvider";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";

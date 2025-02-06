@@ -10,6 +10,8 @@ const intlMiddleware = createMiddleware({
 });
 
 export async function middleware(request: NextRequest) {
+  const url = request.nextUrl;
+  console.log("Middleware invoked for:", url.pathname);
   // Handle language cookie first
   const localeCookie = request.cookies.get("NEXT_LOCALE");
   const response = intlMiddleware(request);
@@ -19,17 +21,25 @@ export async function middleware(request: NextRequest) {
   }
 
   const token = await getToken({ req: request }).catch(() => null);
-  const url = request.nextUrl;
 
   // Allow access to the scanner route for everyone (no redirects)
   if (url.pathname.startsWith("/qr-scanner")) {
     return NextResponse.next();
   }
 
-  // Redirect temporary users away from all pages except 'My Scanned QRs'
-  if (token && token.isTemporary && url.pathname !== "/my-scanned-qrs") {
+  // Redirect temporary users away from all pages except allowed ones
+  if (
+    token &&
+    token.isTemporary &&
+    !(
+      url.pathname.startsWith("/my-scanned-qrs") ||
+      url.pathname.startsWith("/victim-information") ||
+      url.pathname.startsWith("/qr-scanner")
+    )
+  ) {
     return NextResponse.redirect(new URL("/my-scanned-qrs", request.url));
   }
+
   // Redirect logged-in users away from login or signup pages
   if (
     token &&
