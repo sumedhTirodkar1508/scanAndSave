@@ -96,7 +96,7 @@ export function AppSidebar() {
     user: {
       name: session?.user?.name || "Scanne Pour Sauver",
       email: session?.user?.email || "dummyemail@gmail.com",
-      avatar: session?.user?.image || "../../scanneSauverLogo.jpg",
+      avatar: session?.user?.image || "../../scanneSauverLogo.png",
     },
   };
 
@@ -144,7 +144,7 @@ export function AppSidebar() {
                   <SidebarMenuItem key={item.title}>
                     <SidebarMenuButton
                       asChild
-                      className="hover:bg-[var(--sidebar-accent)] hover:text-[var(--sidebar-primary)] transition-colors"
+                      className="hover:bg-[var(--sidebar-accent)] hover:text-white transition-colors"
                     >
                       <a href={item.url}>
                         <item.icon />
@@ -170,7 +170,7 @@ export function AppSidebar() {
                     <SidebarMenuItem key={item.title}>
                       <SidebarMenuButton
                         asChild
-                        className="hover:bg-[var(--sidebar-accent)] hover:text-[var(--sidebar-primary)] transition-colors"
+                        className="hover:bg-[var(--sidebar-accent)] hover:text-white transition-colors"
                       >
                         <a href={item.url}>
                           <item.icon />

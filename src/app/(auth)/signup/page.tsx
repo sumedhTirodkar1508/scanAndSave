@@ -159,10 +159,10 @@ export default function SignupPage() {
               {/* <!-- Start Logo --> */}
               <div className="text-center mx-auto">
                 <Link href="/">
-                  <div className="flex justify-center mb-4">
+                  <div className="flex justify-center mb-4 bg-white rounded-lg">
                     <Avatar style={{ height: "5rem", width: "5rem" }}>
                       <AvatarImage
-                        src="../../scanneSauverLogo.jpg"
+                        src="../../scanneSauverLogo.png"
                         alt="Logo"
                       />
                       <AvatarFallback>X</AvatarFallback>

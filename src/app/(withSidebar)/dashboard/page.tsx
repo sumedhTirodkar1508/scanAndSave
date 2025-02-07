@@ -170,7 +170,9 @@ export default function DashboardPage() {
 
   return (
     <div className="flex flex-col items-center py-6">
-      <h1 className="text-xl font-bold mb-4">{t("dashboardTitle")}</h1>
+      <h1 className="text-xl font-bold mb-4 text-white">
+        {t("dashboardTitle")}
+      </h1>
       <Card className="w-full mb-4">
         <CardHeader>
           <CardTitle>{t("approvedTitle")}</CardTitle>
@@ -328,15 +330,6 @@ export default function DashboardPage() {
           </DialogFooter>
         </DialogContent>
       </Dialog>
-
-      <div>
-        <Card className="mt-5 p-4">
-          <CardTitle className="text-5xl">
-            Please email me your personal email address or Whatsapp number. My
-            email is sumedhtirodkar16@gmail.com
-          </CardTitle>
-        </Card>
-      </div>
     </div>
   );
 }

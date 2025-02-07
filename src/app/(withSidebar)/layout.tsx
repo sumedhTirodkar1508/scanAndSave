@@ -30,12 +30,12 @@ export default function DashboardLayout({
         <SidebarInset className="flex flex-col w-full">
           {/* Header with Breadcrumbs */}
           <header className="flex h-16 shrink-0 items-center bg-[var(--sidebar-primary)] justify-between transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
-            <div className="flex items-center gap-2 px-4">
+            <div className="flex items-center gap-2 px-4 text-white">
               <SidebarTrigger className="-ml-1" />
               <Separator orientation="vertical" className="mr-2 h-4" />
               <Breadcrumb>
                 <BreadcrumbList>
-                  <BreadcrumbItem className="hidden md:block">
+                  <BreadcrumbItem className="hidden md:block text-white">
                     <BreadcrumbLink href="/dashboard">
                       Scanne Pour Sauver
                     </BreadcrumbLink>
@@ -47,13 +47,13 @@ export default function DashboardLayout({
                 </BreadcrumbList>
               </Breadcrumb>
             </div>
-            <div className="pr-4">
+            <div className="pr-4 text-white">
               <LanguageSwitcher />
             </div>
           </header>
 
           {/* Main Content Area */}
-          <div className="flex-1 p-4 bg-[#EFEEE7]">
+          <div className="flex-1 p-4 bg-[#59358C]">
             <Suspense fallback={<div>Loading...</div>}>
               <main>{children}</main>
             </Suspense>

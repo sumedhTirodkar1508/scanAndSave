@@ -89,7 +89,7 @@ export default function AdminSaviorsPage() {
                           src={
                             savior.profileImageUrl
                               ? savior.profileImageUrl
-                              : "/scanneSauverLogo.jpg" // Fallback image
+                              : "/scanneSauverLogo.png" // Fallback image
                           }
                           alt={savior.name || t("headers.saviorName")}
                         />

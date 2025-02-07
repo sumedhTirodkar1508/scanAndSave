@@ -94,7 +94,7 @@ export default function SaviorsPage() {
                           src={
                             savior.profileImageUrl
                               ? savior.profileImageUrl
-                              : "/scanneSauverLogo.jpg" // Provide a fallback image
+                              : "/scanneSauverLogo.png" // Provide a fallback image
                           }
                           alt={savior.name || "Savior"}
                         />

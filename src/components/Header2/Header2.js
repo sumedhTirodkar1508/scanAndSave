@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 // import logo from "/public/assets/logos/logo_2.svg";
-import logo from "/public/scanneSauverLogo.jpg";
+import logo from "/public/scanneSauverLogo.png";
 // import logo2 from "/public/assets/logos/logo_1.svg";
 import MobileMenu from "@/components/MobileMenu/MobileMenu";
 import Image from "next/image";
@@ -51,7 +51,7 @@ const Header2 = (props) => {
           <div className="row">
             <div className="col-12">
               <div className="header__wrapper">
-                <div className="header__logo">
+                <div className="header__logo bg-white rounded-lg">
                   <Link
                     onClick={ClickHandler}
                     href="/home"
