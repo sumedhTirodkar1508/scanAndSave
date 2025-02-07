@@ -3,9 +3,13 @@ import React, { useEffect, useState, useCallback } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import Image from "next/image";
-import carousel1 from "/public/assets/carousel1.webp";
-import carousel2 from "/public/assets/carousel2.webp";
-import carousel3 from "/public/assets/carousel3.webp";
+import carousel1 from "/public/assets/carousel/carousel1.jpg";
+import carousel2 from "/public/assets/carousel/carousel2.jpg";
+import carousel3 from "/public/assets/carousel/carousel3.jpg";
+import carousel4 from "/public/assets/carousel/carousel4.jpg";
+import carousel5 from "/public/assets/carousel/carousel5.jpg";
+import carousel6 from "/public/assets/carousel/carousel6.jpg";
+import carousel7 from "/public/assets/carousel/carousel7.jpg";
 
 export function EmblaCarousel() {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [Autoplay()]);
@@ -31,7 +35,15 @@ export function EmblaCarousel() {
       {/* Embla Carousel Container */}
       <div className="embla overflow-hidden" ref={emblaRef}>
         <div className="embla__container flex">
-          {[carousel1, carousel2, carousel3].map((image, index) => (
+          {[
+            carousel1,
+            carousel2,
+            carousel3,
+            carousel4,
+            carousel5,
+            carousel6,
+            carousel7,
+          ].map((image, index) => (
             <div key={index} className="embla__slide flex-shrink-0 w-full">
               <Image
                 src={image}

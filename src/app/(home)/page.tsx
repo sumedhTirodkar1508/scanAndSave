@@ -7,9 +7,8 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import logo from "/public/scanneSauverLogo.png";
 import { EmblaCarousel } from "@/components/EmblaCarousel/EmblaCarousel";
-import carousel1 from "/public/assets/carousel1.webp";
-import carousel2 from "/public/assets/carousel2.webp";
-import carousel3 from "/public/assets/carousel3.webp";
+import carousel2 from "/public/assets/carousel2_old.webp";
+import carousel3_old from "/public/assets/carousel3_old.webp";
 
 export default function Home() {
   const router = useRouter();
@@ -53,7 +52,11 @@ export default function Home() {
             </button>
             {/* Desktop Buttons */}
             <div className="hidden md:flex items-center gap-6">
-              <Button variant="default" onClick={() => router.push("/login")}>
+              <Button
+                className="bg-[#59358C]"
+                variant="default"
+                onClick={() => router.push("/login")}
+              >
                 Login
               </Button>
               <Button variant="outline" onClick={() => router.push("/signup")}>
@@ -151,7 +154,7 @@ export default function Home() {
         <div className="container mx-auto px-4 py-12">
           <div className="grid grid-cols-2 md:grid-cols-2 gap-6 justify-items-center">
             {/* Service Médicale */}
-            <Link href="#" className="z-1 w-full md:w-3/4 lg:w-1/2">
+            <Link href="#" className="z-10 w-full md:w-3/4 lg:w-1/2">
               <Card className="p-2 flex flex-col items-center text-center cursor-pointer hover:bg-blue-100 transition">
                 <div className="mb-4">
                   <Image
@@ -167,11 +170,11 @@ export default function Home() {
             </Link>
 
             {/* SPS QR SCANNE */}
-            <Link href="/qr-scanner" className="z-1 w-full md:w-3/4 lg:w-1/2">
+            <Link href="/qr-scanner" className="z-10 w-full md:w-3/4 lg:w-1/2">
               <Card className="p-2 flex flex-col items-center text-center cursor-pointer hover:bg-blue-100 transition">
                 <div className="mb-4">
                   <Image
-                    src={carousel3}
+                    src={carousel3_old}
                     alt="SPS QR SCANNE"
                     className="w-full h-full rounded-sm"
                   />
@@ -183,7 +186,7 @@ export default function Home() {
             </Link>
 
             {/* Informations médicales */}
-            <Link href="#" className="z-1 w-full md:w-3/4 lg:w-1/2">
+            <Link href="#" className="z-10 w-full md:w-3/4 lg:w-1/2">
               <Card className="p-2 flex flex-col items-center text-centercursor-pointer hover:bg-blue-100 transition">
                 <div className="mb-4">
                   <Image
@@ -199,7 +202,7 @@ export default function Home() {
             </Link>
 
             {/* Kits SPS */}
-            <Link href="#" className="z-1 w-full md:w-3/4 lg:w-1/2">
+            <Link href="#" className="z-10 w-full md:w-3/4 lg:w-1/2">
               <Card className="p-2 flex flex-col items-center text-center cursor-pointer hover:bg-blue-100 transition">
                 <div className="mb-4">
                   <Image
