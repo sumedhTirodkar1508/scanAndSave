@@ -7,8 +7,10 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import logo from "/public/scanneSauverLogo.png";
 import { EmblaCarousel } from "@/components/EmblaCarousel/EmblaCarousel";
-import carousel2 from "/public/assets/carousel2_old.webp";
-import carousel3_old from "/public/assets/carousel3_old.webp";
+import medServices from "/public/assets/carousel/medServices.jpg";
+import medInfo from "/public/assets/carousel/medInfo.jpg";
+import spsScanner from "/public/assets/carousel/spsScanner.jpg";
+import spsKits from "/public/assets/carousel/spsKits.jpg";
 
 export default function Home() {
   const router = useRouter();
@@ -158,7 +160,7 @@ export default function Home() {
               <Card className="p-2 flex flex-col items-center text-center cursor-pointer hover:bg-blue-100 transition">
                 <div className="mb-4">
                   <Image
-                    src={carousel2}
+                    src={medServices}
                     alt="Service Médicale"
                     className="w-full h-full rounded-sm"
                   />
@@ -174,7 +176,7 @@ export default function Home() {
               <Card className="p-2 flex flex-col items-center text-center cursor-pointer hover:bg-blue-100 transition">
                 <div className="mb-4">
                   <Image
-                    src={carousel3_old}
+                    src={spsScanner}
                     alt="SPS QR SCANNE"
                     className="w-full h-full rounded-sm"
                   />
@@ -190,7 +192,7 @@ export default function Home() {
               <Card className="p-2 flex flex-col items-center text-centercursor-pointer hover:bg-blue-100 transition">
                 <div className="mb-4">
                   <Image
-                    src={carousel2}
+                    src={medInfo}
                     alt="Informations médicales"
                     className="w-full h-full rounded-sm"
                   />
@@ -206,7 +208,7 @@ export default function Home() {
               <Card className="p-2 flex flex-col items-center text-center cursor-pointer hover:bg-blue-100 transition">
                 <div className="mb-4">
                   <Image
-                    src={carousel2}
+                    src={spsKits}
                     alt="Kits SPS"
                     className="w-full h-full rounded-sm"
                   />

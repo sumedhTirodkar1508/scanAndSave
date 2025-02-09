@@ -14,9 +14,7 @@ export async function POST(request: NextRequest) {
   // Check if the user is authenticated and has an admin role
   if (!session || session.user.role !== "ADMIN") {
     return NextResponse.json(
-      {
-        error: "Access denied. Admins only.",
-      },
+      { error: "Access denied. Admins only." },
       { status: 403 }
     );
   }

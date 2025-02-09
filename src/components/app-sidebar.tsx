@@ -10,6 +10,9 @@ import {
   BriefcaseMedical,
   Search,
   Scan,
+  UserPlus,
+  List,
+  SquareActivity,
 } from "lucide-react";
 import { signOut } from "next-auth/react";
 import { useToast } from "@/hooks/use-toast";
@@ -90,6 +93,29 @@ export function AppSidebar() {
       url: "/admin/savior-links",
       icon: Link,
     },
+    {
+      title: t("menu.hospitalUser"),
+      url: "/admin/create-hospital-user",
+      icon: UserPlus,
+    },
+    {
+      title: t("menu.hospitalUserList"),
+      url: "/admin/hospital-user-list",
+      icon: List,
+    },
+  ];
+  // DOC-specific items.
+  const docItems = [
+    {
+      title: t("menu.updateMedInfo"),
+      url: "/doctor/update-medical-information",
+      icon: SquareActivity,
+    },
+    {
+      title: t("menu.hospitalUserList"),
+      url: "/admin/hospital-user-list",
+      icon: List,
+    },
   ];
 
   const data = {
@@ -123,6 +149,9 @@ export function AppSidebar() {
       });
     }
   };
+
+  const DocorADMINisAllowed =
+    session?.user?.role === "ADMIN" || session?.user?.role === "DOC";
 
   return (
     <>
@@ -167,6 +196,31 @@ export function AppSidebar() {
               <SidebarGroupContent>
                 <SidebarMenu>
                   {adminItems.map((item) => (
+                    <SidebarMenuItem key={item.title}>
+                      <SidebarMenuButton
+                        asChild
+                        className="hover:bg-[var(--sidebar-accent)] hover:text-white transition-colors"
+                      >
+                        <a href={item.url}>
+                          <item.icon />
+                          <span>{item.title}</span>
+                        </a>
+                      </SidebarMenuButton>
+                    </SidebarMenuItem>
+                  ))}
+                </SidebarMenu>
+              </SidebarGroupContent>
+            </SidebarGroup>
+          )}
+          {/* DOC Section */}
+          {DocorADMINisAllowed && (
+            <SidebarGroup>
+              <SidebarGroupLabel className="text-white">
+                {t("doc")}
+              </SidebarGroupLabel>
+              <SidebarGroupContent>
+                <SidebarMenu>
+                  {docItems.map((item) => (
                     <SidebarMenuItem key={item.title}>
                       <SidebarMenuButton
                         asChild

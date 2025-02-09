@@ -35,6 +35,7 @@
   "Sidebar": {
     "navigation": "Navigation",
     "admin": "Admin",
+    "doc": "Hospital",
     "menu": {
       "dashboard": "Dashboard",
       "generateQR": "Generate QR",
@@ -43,6 +44,9 @@
       "scanQR": "Scan QR",
       "approveReject": "Approve/Reject QR",
       "saviorLinks": "Savior Links",
+      "hospitalUser": "Create Hospital User",
+      "hospitalUserList": "Hospital Users",
+      "updateMedInfo": "Update Medical Info",
       "logout": "Logout"
     }
   },
@@ -204,6 +208,41 @@
       "status": "Status"
     }
   },
+  "MedicalInfo": {
+    "title": "Victim Information",
+    "subtitle": "Details retrieved from the QR Code",
+    "loading": "Loading victim information...",
+    "noData": "No data found for this QR Code.",
+    "messages": {
+      "fetchError": "Unable to fetch victim information.",
+      "invalidQR": "Invalid QR Code ID.",
+      "notifySuccess": "Notifications sent successfully.",
+      "notifyError": "Failed to send notifications."
+    },
+    "fields": {
+      "name": "Victim Name",
+      "email": "Email",
+      "phone": "Phone",
+      "profession": "Profession",
+      "nationality": "Nationality",
+      "height": "Height",
+      "weight": "Weight",
+      "age": "Age",
+      "houseNumber": "House Number",
+      "address": "Address",
+      "city": "City",
+      "country": "Country",
+      "bloodGroup": "Blood Group",
+      "onMedication": "On Medication",
+      "sickness": "Sickness",
+      "onDrugs": "On Drugs",
+      "drugsName": "Drugs",
+      "doctorPhone": "Doctor's Phone",
+      "hospital": "Hospital",
+      "relative": "Relative",
+      "status": "Status"
+    }
+  },
   "QRApprovals": {
     "title": "QR Code Approval Requests",
     "tableCaption": "A list of pending QR code approval requests.",
@@ -257,6 +296,7 @@
     },
     "messages": {
       "success": "Email verified successfully!",
+      "processing": "Loading...",
       "error": "Failed to verify email."
     }
   },
@@ -297,6 +337,25 @@
     },
     "errors": {
       "registrationFailed": "Registration failed. Please try again."
+    }
+  },
+  "CreateHospitalUser": {
+    "title": "Create Hospital User",
+    "processing": "Processing",
+    "fields": {
+      "name": "Name",
+      "email": "Email",
+      "password": "Password"
+    },
+    "buttons": {
+      "create": "Create",
+      "creating": "Creating..."
+    },
+    "links": {
+      "login": "Already have an account? Login here"
+    },
+    "errors": {
+      "registrationFailed": "Failed to create user. Please try again."
     }
   }
 }
