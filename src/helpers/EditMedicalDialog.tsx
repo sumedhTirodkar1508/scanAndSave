@@ -165,7 +165,7 @@ export function DialogDemo({
 
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="doctorPhoneNumber" className="text-right">
-              Doctor's Contact
+              Doctor&apos;s Contact
             </Label>
             <Input
               id="doctorPhoneNumber"

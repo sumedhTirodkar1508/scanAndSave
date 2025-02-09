@@ -121,7 +121,7 @@ export default function DocUsersPage() {
                       <DialogHeader>
                         <DialogTitle>Edit User</DialogTitle>
                         <DialogDescription id="edit-user-description">
-                          Update the user's information and save changes.
+                          Update the user&apos;s information and save changes.
                         </DialogDescription>
                       </DialogHeader>
                       <div className="grid gap-4 py-4">
