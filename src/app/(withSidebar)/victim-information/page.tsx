@@ -209,7 +209,7 @@ export default function VictimInformationPage() {
             </div>
 
             {/* Medical Information */}
-            <div>
+            {/* <div>
               <strong>{t("fields.bloodGroup")}:</strong> {bloodGroup}
             </div>
             <div>
@@ -232,7 +232,7 @@ export default function VictimInformationPage() {
             </div>
             <div>
               <strong>{t("fields.hospital")}:</strong> {hospitalName || "N/A"}
-            </div>
+            </div> */}
 
             {/* Relatives' Information */}
             {[1, 2, 3].map((i) => {

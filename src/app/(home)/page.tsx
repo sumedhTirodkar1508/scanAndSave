@@ -131,19 +131,19 @@ export default function Home() {
 
         <div className="inset-0 bg-[#0A013D] text-white text-center py-5">
           <div className="container mx-auto px-4 h-full flex flex-col items-center justify-center text-white p-4">
-            <h1 className="text-4xl md:text-6xl font-bold mb-4 text-white">
+            {/* <h1 className="text-4xl md:text-6xl font-bold mb-4 text-white">
               Scannez Pour Sauver
             </h1>
             <p className="text-xl mb-6">
               Votre QR Code pour la sécurité immédiate
-            </p>
+            </p> */}
             <Button
               variant="destructive"
               size="lg"
               onClick={() => router.push("/generateQR")}
-              className="relative bg-red-600 hover:bg-red-700 text-white text-xl font-bold px-8 py-4 rounded-full animate-pulse shadow-[0_0_20px_#ff0000,0_0_40px_#ff0000] hover:shadow-[0_0_25px_#ff0000,0_0_50px_#ff0000] transition-all duration-900"
+              className="relative bg-red-600 hover:bg-red-700 text-white text-xl font-bold px-8 py-8 rounded-lg animate-pulse shadow-[0_0_20px_#ff0000,0_0_40px_#ff0000] hover:shadow-[0_0_25px_#ff0000,0_0_50px_#ff0000] transition-all duration-900"
             >
-              Get Your QR Code
+              OBTENEZ VOTRE CODE QR MAINTENANT
             </Button>
           </div>
         </div>
@@ -155,67 +155,67 @@ export default function Home() {
         <div className="absolute inset-0 bg-sky-600 opacity-60"></div>
         <div className="container mx-auto px-4 py-12">
           <div className="grid grid-cols-2 md:grid-cols-2 gap-6 justify-items-center">
-            {/* Service Médicale */}
-            <Link href="#" className="z-10 w-full md:w-3/4 lg:w-1/2">
-              <Card className="p-2 flex flex-col items-center text-center cursor-pointer hover:bg-blue-100 transition">
-                <div className="mb-4">
-                  <Image
-                    src={medServices}
-                    alt="Service Médicale"
-                    className="w-full h-full rounded-sm"
-                  />
-                </div>
-                <h3 className="text-sm md:text-xl lg:text-2xl font-semibold">
-                  Service Médicale
-                </h3>
-              </Card>
-            </Link>
-
             {/* SPS QR SCANNE */}
             <Link href="/qr-scanner" className="z-10 w-full md:w-3/4 lg:w-1/2">
-              <Card className="p-2 flex flex-col items-center text-center cursor-pointer hover:bg-blue-100 transition">
-                <div className="mb-4">
+              <Card className="p-0 flex flex-col items-center text-center cursor-pointer hover:bg-blue-100 transition border-8 border-[#298CD4] rounded-lg">
+                <div className="mb-0">
                   <Image
                     src={spsScanner}
                     alt="SPS QR SCANNE"
                     className="w-full h-full rounded-sm"
                   />
                 </div>
-                <h3 className="text-sm md:text-xl lg:text-2xl font-semibold">
+                {/* <h3 className="text-sm md:text-xl lg:text-2xl font-semibold">
                   SPS QR SCANNE
-                </h3>
-              </Card>
-            </Link>
-
-            {/* Informations médicales */}
-            <Link href="#" className="z-10 w-full md:w-3/4 lg:w-1/2">
-              <Card className="p-2 flex flex-col items-center text-centercursor-pointer hover:bg-blue-100 transition">
-                <div className="mb-4">
-                  <Image
-                    src={medInfo}
-                    alt="Informations médicales"
-                    className="w-full h-full rounded-sm"
-                  />
-                </div>
-                <h3 className="text-sm md:text-xl lg:text-2xl font-semibold">
-                  Informations médicales
-                </h3>
+                </h3> */}
               </Card>
             </Link>
 
             {/* Kits SPS */}
             <Link href="#" className="z-10 w-full md:w-3/4 lg:w-1/2">
-              <Card className="p-2 flex flex-col items-center text-center cursor-pointer hover:bg-blue-100 transition">
-                <div className="mb-4">
+              <Card className="p-0 flex flex-col items-center text-center cursor-pointer hover:bg-blue-100 transition border-8 border-[#298CD4] rounded-lg">
+                <div className="mb-0">
                   <Image
                     src={spsKits}
                     alt="Kits SPS"
                     className="w-full h-full rounded-sm"
                   />
                 </div>
-                <h3 className="text-sm md:text-xl lg:text-2xl font-semibold">
+                {/* <h3 className="text-sm md:text-xl lg:text-2xl font-semibold">
                   Kits SPS
-                </h3>
+                </h3> */}
+              </Card>
+            </Link>
+
+            {/* Service Médicale */}
+            <Link href="#" className="z-10 w-full md:w-3/4 lg:w-1/2">
+              <Card className="p-0 flex flex-col items-center text-center cursor-pointer hover:bg-blue-100 transition border-8 border-[#298CD4] rounded-lg">
+                <div className="mb-0">
+                  <Image
+                    src={medServices}
+                    alt="Service Médicale"
+                    className="w-full h-full rounded-sm"
+                  />
+                </div>
+                {/* <h3 className="text-sm md:text-xl lg:text-2xl font-semibold">
+                  Service Médicale
+                </h3> */}
+              </Card>
+            </Link>
+
+            {/* Informations médicales */}
+            <Link href="#" className="z-10 w-full md:w-3/4 lg:w-1/2">
+              <Card className="p-0 flex flex-col items-center text-centercursor-pointer hover:bg-blue-100 transition border-8 border-[#298CD4] rounded-lg">
+                <div className="mb-0">
+                  <Image
+                    src={medInfo}
+                    alt="Informations médicales"
+                    className="w-full h-full rounded-sm"
+                  />
+                </div>
+                {/* <h3 className="text-sm md:text-xl lg:text-2xl font-semibold">
+                  Informations médicales
+                </h3> */}
               </Card>
             </Link>
           </div>

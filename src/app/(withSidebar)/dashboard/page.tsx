@@ -2,6 +2,7 @@
 
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { useSession } from "next-auth/react";
 import { ChevronDown } from "lucide-react";
 import { QrRequest } from "@/app/types/qrResquests";
 import { useTranslations } from "next-intl";
@@ -46,7 +47,19 @@ export default function DashboardPage() {
   const [deletingQRCodeId, setDeletingQRCodeId] = useState<string | null>(null); // State for the QR code to delete
   const { toast } = useToast(); // Access toast hook
   const router = useRouter(); // Use router for redirection
+  const { data: session, status } = useSession();
   const t = useTranslations("Dashboard");
+
+  // Wait until session is loaded before checking role
+  useEffect(() => {
+    if (status === "loading") return; // Wait until session is ready
+    // console.log("Session:", session);
+    // console.log("Role:", session?.user?.role);
+
+    if (!session || !["ADMIN", "USER"].includes(session.user.role)) {
+      router.push("/doctor/update-medical-information");
+    }
+  }, [session, status, router]);
 
   // Fetch QR codes from the backend
   useEffect(() => {

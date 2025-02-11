@@ -111,11 +111,11 @@ export function AppSidebar() {
       url: "/doctor/update-medical-information",
       icon: SquareActivity,
     },
-    {
-      title: t("menu.hospitalUserList"),
-      url: "/admin/hospital-user-list",
-      icon: List,
-    },
+    // {
+    //   title: t("menu.hospitalUserList"),
+    //   url: "/admin/hospital-user-list",
+    //   icon: List,
+    // },
   ];
 
   const data = {
@@ -152,6 +152,8 @@ export function AppSidebar() {
 
   const DocorADMINisAllowed =
     session?.user?.role === "ADMIN" || session?.user?.role === "DOC";
+  const USERorADMINisAllowed =
+    session?.user?.role === "ADMIN" || session?.user?.role === "USER";
 
   return (
     <>
@@ -163,29 +165,31 @@ export function AppSidebar() {
           <NavUser user={data.user} />
         </SidebarHeader>
         <SidebarContent>
-          <SidebarGroup>
-            <SidebarGroupLabel className="text-white">
-              {t("navigation")}
-            </SidebarGroupLabel>
-            <SidebarGroupContent>
-              <SidebarMenu>
-                {userItems.map((item) => (
-                  <SidebarMenuItem key={item.title}>
-                    <SidebarMenuButton
-                      asChild
-                      className="hover:bg-[var(--sidebar-accent)] hover:text-white transition-colors"
-                    >
-                      <a href={item.url}>
-                        <item.icon />
+          {USERorADMINisAllowed && (
+            <SidebarGroup>
+              <SidebarGroupLabel className="text-white">
+                {t("navigation")}
+              </SidebarGroupLabel>
+              <SidebarGroupContent>
+                <SidebarMenu>
+                  {userItems.map((item) => (
+                    <SidebarMenuItem key={item.title}>
+                      <SidebarMenuButton
+                        asChild
+                        className="hover:bg-[var(--sidebar-accent)] hover:text-white transition-colors"
+                      >
+                        <a href={item.url}>
+                          <item.icon />
 
-                        <span>{item.title}</span>
-                      </a>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                ))}
-              </SidebarMenu>
-            </SidebarGroupContent>
-          </SidebarGroup>
+                          <span>{item.title}</span>
+                        </a>
+                      </SidebarMenuButton>
+                    </SidebarMenuItem>
+                  ))}
+                </SidebarMenu>
+              </SidebarGroupContent>
+            </SidebarGroup>
+          )}
 
           {/* Admin Section */}
           {session?.user?.role === "ADMIN" && (

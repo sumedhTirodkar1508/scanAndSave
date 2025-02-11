@@ -8,6 +8,13 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from "@/components/ui/select"; // Import Select components
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -86,7 +93,7 @@ export function DialogDemo({
       <DialogTrigger asChild>
         <Button
           variant="outline"
-          className="mt-4"
+          className="mt-4 w-full place-items-center"
           onClick={() => setOpen(true)}
         >
           Edit Medical Info
@@ -97,17 +104,30 @@ export function DialogDemo({
           <DialogTitle>Edit Medical Information</DialogTitle>
         </DialogHeader>
         <div className="grid gap-4 py-4">
+          {/* Blood Group Dropdown */}
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="bloodGroup" className="text-right">
               Blood Group
             </Label>
-            <Input
-              id="bloodGroup"
-              name="bloodGroup"
+            <Select
+              onValueChange={(value) =>
+                setFormData({ ...formData, bloodGroup: value })
+              }
               value={formData.bloodGroup}
-              onChange={handleChange}
-              className="col-span-3"
-            />
+            >
+              <SelectTrigger className="col-span-3">
+                <SelectValue placeholder="Select Blood Group" />
+              </SelectTrigger>
+              <SelectContent>
+                {["A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-"].map(
+                  (group) => (
+                    <SelectItem key={group} value={group}>
+                      {group}
+                    </SelectItem>
+                  )
+                )}
+              </SelectContent>
+            </Select>
           </div>
 
           <div className="grid grid-cols-4 items-center gap-4">

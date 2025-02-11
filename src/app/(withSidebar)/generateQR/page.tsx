@@ -616,7 +616,7 @@ export default function GenerateQRPage() {
               </div>
 
               {/* Medical Information */}
-              <div className="flex flex-col space-y-1.5">
+              {/* <div className="flex flex-col space-y-1.5">
                 <Label htmlFor="bloodGroup">
                   {t("medicalInfo.bloodGroup")}
                 </Label>
@@ -718,7 +718,7 @@ export default function GenerateQRPage() {
                   }
                   placeholder="Enter hospital name"
                 />
-              </div>
+              </div> */}
             </div>
           </form>
         </CardContent>
