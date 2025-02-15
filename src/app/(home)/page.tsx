@@ -172,7 +172,7 @@ export default function Home() {
             </Link>
 
             {/* Kits SPS */}
-            <Link href="#" className="z-10 w-full md:w-3/4 lg:w-1/2">
+            <Link href="/sps-kits" className="z-10 w-full md:w-3/4 lg:w-1/2">
               <Card className="p-0 flex flex-col items-center text-center cursor-pointer hover:bg-blue-100 transition border-8 border-[#298CD4] rounded-lg">
                 <div className="mb-0">
                   <Image
@@ -188,7 +188,10 @@ export default function Home() {
             </Link>
 
             {/* Service Médicale */}
-            <Link href="#" className="z-10 w-full md:w-3/4 lg:w-1/2">
+            <Link
+              href="/medical-services"
+              className="z-10 w-full md:w-3/4 lg:w-1/2"
+            >
               <Card className="p-0 flex flex-col items-center text-center cursor-pointer hover:bg-blue-100 transition border-8 border-[#298CD4] rounded-lg">
                 <div className="mb-0">
                   <Image
@@ -204,7 +207,10 @@ export default function Home() {
             </Link>
 
             {/* Informations médicales */}
-            <Link href="#" className="z-10 w-full md:w-3/4 lg:w-1/2">
+            <Link
+              href="/medical-informations"
+              className="z-10 w-full md:w-3/4 lg:w-1/2"
+            >
               <Card className="p-0 flex flex-col items-center text-centercursor-pointer hover:bg-blue-100 transition border-8 border-[#298CD4] rounded-lg">
                 <div className="mb-0">
                   <Image
